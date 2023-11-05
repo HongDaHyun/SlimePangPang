@@ -8,11 +8,13 @@ public class Slime : MonoBehaviour, IPoolObject
 {
     public int level;
 
-    private bool isDrag, isMerge;
+    private bool isDrag, isMerge, isAttach;
     private float leftBorder, rightBorder, topBorder;
     private float defSize;
+    private float deadTime;
 
     [HideInInspector] public Rigidbody2D rigid;
+    private SpriteRenderer sr;
     private CircleCollider2D circle;
 
     public void OnCreatedInPool()
@@ -20,6 +22,7 @@ public class Slime : MonoBehaviour, IPoolObject
         name = name.Replace("(Clone)", "");
 
         rigid = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         circle = GetComponent<CircleCollider2D>();
         defSize = transform.localScale.x;
     }
@@ -30,14 +33,16 @@ public class Slime : MonoBehaviour, IPoolObject
         SetBorder();
 
         Pop();
+    }
 
-        if (BtnManager.Instance.isTouching)
-            Drag();
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        StartCoroutine(AttachRoutine());
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Slime")
+        if(collision.gameObject.CompareTag("Slime"))
         {
             Slime other = collision.gameObject.GetComponent<Slime>();
 
@@ -56,14 +61,37 @@ public class Slime : MonoBehaviour, IPoolObject
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Finish"))
+        {
+            deadTime += Time.deltaTime;
+
+            // 2초 동안 라인에 머물 시
+            if(deadTime > 2)
+                GameManager.Instance.GameOver(); // 게임 오버
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Finish"))
+        {
+            // 게임 오버 조건 초기화
+            deadTime = 0;
+        }
+    }
+
     private void SetStat()
     {
         isDrag = false;
         isMerge = false;
+        isAttach = false;
         rigid.simulated = false;
         circle.enabled = true;
         rigid.velocity = Vector2.zero;
         rigid.angularVelocity = 0;
+        sr.sortingOrder = 0;
     }
 
     private void SetBorder()
@@ -80,32 +108,54 @@ public class Slime : MonoBehaviour, IPoolObject
     private IEnumerator LevelUp(Slime other)
     {
         SpawnManager sm = SpawnManager.Instance;
+        GameManager gm = GameManager.Instance;
 
         // 변수 설정
+        int upLevel = level + 1;
         isMerge = true;
         other.isMerge = true;
         other.rigid.simulated = false;
         other.circle.enabled = false;
+        other.sr.sortingOrder = 1;
 
-        float limitDistance = 0.1f; // 거리 근사 최소값
+        // 프레임 단위 합쳐짐(20 프레임)
+        int frameCount = 0;
 
         // 합쳐지는 중
-        while(Vector2.Distance(other.transform.position, transform.position) > limitDistance)
+        while(frameCount < 20)
         {
-            // 거리가 충분히 근사하면 반복문 빠져나가기
-            other.transform.position = Vector3.Lerp(other.transform.position, transform.position, 0.1f);
+            other.transform.position = Vector3.Lerp(other.transform.position, transform.position, 10f * Time.deltaTime);
+            frameCount++;
             yield return null;
         }
 
         // 합침 완료
-        sm.curMaxLv = Mathf.Max(level + 1, sm.curMaxLv);
+        gm.GetScore((int)Mathf.Pow(2, level)); // 상위 레벨에 2제곱 만큼 점수 추가
+        sm.curMaxLv = Mathf.Max(upLevel, sm.curMaxLv); // 최대 스폰 레벨 설정
+        // 변수 설정
         other.isMerge = false;
         isMerge = false;
+        // 슬라임 삭제
         sm.DeSpawnSlime(other);
         sm.DeSpawnSlime(this);
 
-        Slime newSlime = sm.SpawnSlime(level + 1, transform);
+        // 새 슬라임과 이펙트 생성
+        sm.SpawnPopParticle(transform);
+        Slime newSlime = sm.SpawnSlime(upLevel, transform);
         newSlime.rigid.simulated = true;
+    }
+
+    IEnumerator AttachRoutine()
+    {
+        if (isAttach)
+            yield break;
+
+        isAttach = true;
+        SoundManager.Instance.SFXPlay(SFXType.Attach, 0);
+
+        yield return new WaitForSeconds(0.2f);
+
+        isAttach = false;
     }
 
     private void Pop()

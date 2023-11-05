@@ -7,6 +7,7 @@ using Redcode.Pools;
 public class SpawnManager : Singleton<SpawnManager>
 {
     public Map map;
+    public List<Slime> slimeList;
     public Slime lastSlime;
     public int curMaxLv;
 
@@ -22,6 +23,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         Slime slime = PoolManager.Instance.GetFromPool<Slime>($"Slime_{i}");
         slime.transform.position = trans.position;
+        slimeList.Add(slime);
 
         return slime;
     }
@@ -29,14 +31,23 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnSlime(Slime slime)
     {
         PoolManager.Instance.TakeToPool<Slime>(slime.name, slime);
+        slimeList.Remove(slime);
     }
 
     private void NextSlime()
     {
+        if (GameManager.Instance.isOver)
+            return;
+
         Slime slime = SpawnSlime(RanSlime(), map.spawnPoint);
         slime.transform.rotation = Quaternion.identity;
         lastSlime = slime;
 
+
+        if (BtnManager.Instance.isTouching)
+            slime.Drag();
+
+        SoundManager.Instance.SFXPlay(SFXType.Next, 0);
         StartCoroutine(WaitNext());
     }
 
@@ -58,6 +69,29 @@ public class SpawnManager : Singleton<SpawnManager>
     }
     #endregion
 
+    #region Particle
+    public Particle SpawnParticle(string s, Transform trans)
+    {
+        Particle particle = PoolManager.Instance.GetFromPool<Particle>(s);
+        particle.transform.position = trans.position;
+        particle.transform.localScale = trans.localScale;
+
+        return particle;
+    }
+
+    public Particle SpawnPopParticle(Transform trans)
+    {
+        Particle pop = SpawnParticle("Pop_Effect", trans);
+        SoundManager.Instance.SFXPlay(SFXType.Pop, 0);
+
+        return pop;
+    }
+
+    public void DeSpawnParticle(Particle particle)
+    {
+        PoolManager.Instance.TakeToPool<Particle>(particle.name, particle);
+    }
+    #endregion
 }
 
 [Serializable]
