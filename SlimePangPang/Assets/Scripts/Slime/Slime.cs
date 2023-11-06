@@ -38,16 +38,13 @@ public class Slime : MonoBehaviour, IPoolObject
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StartCoroutine(AttachRoutine());
-    }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Slime"))
+        if (collision.gameObject.CompareTag("Slime"))
         {
             Slime other = collision.gameObject.GetComponent<Slime>();
 
             // 슬라임 합치기
-            if(level == other.level && !isMerge && !other.isMerge && level < 7)
+            if (level == other.level && !isMerge && !other.isMerge && level < 7)
             {
                 // 자신과 상대편 위치 가져오기
                 Vector2 meTrans = transform.position;
@@ -55,7 +52,7 @@ public class Slime : MonoBehaviour, IPoolObject
 
                 // 1. 자신이 아래에 있을 때
                 // 2. 동일한 높이일 때, 자신이 오른쪽에 있을 때
-                if(meTrans.y < otherTrans.y || (meTrans.y == otherTrans.y && meTrans.x > otherTrans.x))
+                if (meTrans.y < otherTrans.y || (meTrans.y == otherTrans.y && meTrans.x > otherTrans.x))
                     StartCoroutine(LevelUp(other));
             }
         }
@@ -118,11 +115,11 @@ public class Slime : MonoBehaviour, IPoolObject
         other.circle.enabled = false;
         other.sr.sortingOrder = 1;
 
-        // 프레임 단위 합쳐짐(20 프레임)
+        // 프레임 단위 합쳐짐(15 프레임)
         int frameCount = 0;
 
         // 합쳐지는 중
-        while(frameCount < 20)
+        while(frameCount < 15)
         {
             other.transform.position = Vector3.Lerp(other.transform.position, transform.position, 10f * Time.deltaTime);
             frameCount++;

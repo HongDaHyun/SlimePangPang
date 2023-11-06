@@ -63,7 +63,7 @@ public class SpawnManager : Singleton<SpawnManager>
         while (lastSlime != null)
             yield return null;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         NextSlime();
     }
