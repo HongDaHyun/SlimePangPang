@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1409644674340553539}
   - component: {fileID: 1409644674340553536}
   - component: {fileID: 1409644674340553537}
-  - component: {fileID: 1409644674340553662}
+  - component: {fileID: 1038072543737130448}
   - component: {fileID: 1409644674340553538}
   m_Layer: 0
   m_Name: Slime_0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 40f2f011ab0509a4d889c9c1f4b78ba9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 091d41dab148e534a8cf6a1fdcf6361d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -108,8 +108,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1409644674340553662
-CircleCollider2D:
+--- !u!60 &1038072543737130448
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,8 +122,53 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.29, y: 0.5}
+      - {x: 0.35999998, y: 0.45}
+      - {x: 0.41, y: 0.39}
+      - {x: 0.47, y: 0.32}
+      - {x: 0.51, y: 0.24}
+      - {x: 0.53999996, y: 0.16}
+      - {x: 0.57, y: 0.08}
+      - {x: 0.58, y: 0}
+      - {x: 0.59999996, y: -0.07}
+      - {x: 0.61, y: -0.14999999}
+      - {x: 0.59999996, y: -0.22999999}
+      - {x: 0.58, y: -0.31}
+      - {x: 0.53999996, y: -0.38}
+      - {x: 0.48, y: -0.45}
+      - {x: 0.39999998, y: -0.5}
+      - {x: 0.31, y: -0.55}
+      - {x: 0.21, y: -0.58}
+      - {x: 0.099999994, y: -0.59}
+      - {x: -0.14999999, y: -0.58}
+      - {x: -0.26, y: -0.56}
+      - {x: -0.35, y: -0.52}
+      - {x: -0.45, y: -0.45999998}
+      - {x: -0.52, y: -0.39}
+      - {x: -0.59, y: -0.26}
+      - {x: -0.59999996, y: -0.11}
+      - {x: -0.58, y: 0.03}
+      - {x: -0.53999996, y: 0.14}
+      - {x: -0.47, y: 0.24}
+      - {x: -0.42, y: 0.32}
+      - {x: -0.34, y: 0.41}
+      - {x: -0.26, y: 0.48999998}
+      - {x: -0.17, y: 0.53}
+      - {x: -0.08, y: 0.56}
+      - {x: 0.08, y: 0.58}
+      - {x: 0.16, y: 0.57}
+      - {x: 0.22999999, y: 0.53999996}
 --- !u!114 &1409644674340553538
 MonoBehaviour:
   m_ObjectHideFlags: 0

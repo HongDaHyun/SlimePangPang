@@ -15,7 +15,7 @@ public class Slime : MonoBehaviour, IPoolObject
 
     [HideInInspector] public Rigidbody2D rigid;
     private SpriteRenderer sr;
-    private CircleCollider2D circle;
+    private PolygonCollider2D circle;
 
     public void OnCreatedInPool()
     {
@@ -23,7 +23,7 @@ public class Slime : MonoBehaviour, IPoolObject
 
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        circle = GetComponent<CircleCollider2D>();
+        circle = GetComponent<PolygonCollider2D>();
         defSize = transform.localScale.x;
     }
 
@@ -81,6 +81,8 @@ public class Slime : MonoBehaviour, IPoolObject
 
     private void SetStat()
     {
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-360, 360));
+
         isDrag = false;
         isMerge = false;
         isAttach = false;
