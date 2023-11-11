@@ -4,14 +4,18 @@ using UnityEngine;
 using Redcode.Pools;
 using DG.Tweening;
 
+public enum State { Idle, Cute, Surprise }
+
 public class Slime : MonoBehaviour, IPoolObject
 {
     public int level;
+    public State state;
 
     private bool isDrag, isMerge, isAttach;
     private float leftBorder, rightBorder, topBorder;
-    private float defSize;
+    [HideInInspector] public float defSize;
     private float deadTime;
+    private Sprite defSprite;
 
     [HideInInspector] public Rigidbody2D rigid;
     private SpriteRenderer sr;
@@ -24,6 +28,7 @@ public class Slime : MonoBehaviour, IPoolObject
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         circle = GetComponent<PolygonCollider2D>();
+        defSprite = sr.sprite;
         defSize = transform.localScale.x;
     }
 
@@ -81,6 +86,7 @@ public class Slime : MonoBehaviour, IPoolObject
 
     private void SetStat()
     {
+        sr.sprite = defSprite;
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(-360, 360));
 
         isDrag = false;
@@ -99,9 +105,40 @@ public class Slime : MonoBehaviour, IPoolObject
         SpawnManager sm = SpawnManager.Instance;
 
         // 경계
-        leftBorder = camBound.Left + transform.localScale.x / 2f;
-        rightBorder = camBound.Right - transform.localScale.x / 2f;
+        leftBorder = camBound.Left + transform.localScale.x;
+        rightBorder = camBound.Right - transform.localScale.x;
         topBorder = sm.map.spawnPoint.position.y;
+    }
+
+    public void SetState(State _state)
+    {
+        StopCoroutine(ChangeSprite(state));
+
+        state = _state;
+
+        StartCoroutine(ChangeSprite(state));
+    }
+
+    private IEnumerator ChangeSprite(State _state)
+    {
+        SpriteData sd = SpriteData.Instance;
+
+        switch(_state)
+        {
+            case State.Idle:
+                yield break;
+            case State.Cute:
+                sr.sprite = sd.slimeSprite[level].cute;
+                break;
+            case State.Surprise:
+                sr.sprite = sd.slimeSprite[level].surprise;
+                break;
+        }
+
+        yield return new WaitForSeconds(1.5f);
+
+        state = State.Idle;
+        sr.sprite = defSprite;
     }
 
     private IEnumerator LevelUp(Slime other)
@@ -117,11 +154,11 @@ public class Slime : MonoBehaviour, IPoolObject
         other.circle.enabled = false;
         other.sr.sortingOrder = 1;
 
-        // 프레임 단위 합쳐짐(15 프레임)
+        // 프레임 단위 합쳐짐(10 프레임)
         int frameCount = 0;
 
         // 합쳐지는 중
-        while(frameCount < 15)
+        while(frameCount < 10)
         {
             other.transform.position = Vector3.Lerp(other.transform.position, transform.position, 10f * Time.deltaTime);
             frameCount++;
@@ -139,9 +176,10 @@ public class Slime : MonoBehaviour, IPoolObject
         sm.DeSpawnSlime(this);
 
         // 새 슬라임과 이펙트 생성
-        sm.SpawnPopParticle(transform);
-        Slime newSlime = sm.SpawnSlime(upLevel, transform);
+        Slime newSlime = sm.SpawnSlime(upLevel, transform, State.Cute);
         newSlime.rigid.simulated = true;
+
+        sm.SpawnPopAnim(newSlime);
     }
 
     IEnumerator AttachRoutine()
@@ -152,7 +190,7 @@ public class Slime : MonoBehaviour, IPoolObject
         isAttach = true;
         SoundManager.Instance.SFXPlay(SFXType.Attach, 0);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
 
         isAttach = false;
     }
@@ -177,6 +215,7 @@ public class Slime : MonoBehaviour, IPoolObject
     {
         isDrag = false;
         rigid.simulated = true;
+        SetState(State.Surprise);
     }
 
     private IEnumerator SpawnMove()

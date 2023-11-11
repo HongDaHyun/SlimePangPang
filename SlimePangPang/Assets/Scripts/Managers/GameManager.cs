@@ -43,7 +43,7 @@ public class GameManager : Singleton<GameManager>
         foreach (Slime slime in slimes)
         {
             sm.DeSpawnSlime(slime);
-            sm.SpawnPopParticle(slime.transform);
+            sm.SpawnPopAnim(slime);
             yield return new WaitForSeconds(0.1f);
         }
 
