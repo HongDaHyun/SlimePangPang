@@ -144,7 +144,7 @@ public class Slime : MonoBehaviour, IPoolObject
     private IEnumerator LevelUp(Slime other)
     {
         SpawnManager sm = SpawnManager.Instance;
-        GameManager gm = GameManager.Instance;
+        UIManager um = UIManager.Instance;
 
         // 변수 설정
         int upLevel = level + 1;
@@ -166,7 +166,7 @@ public class Slime : MonoBehaviour, IPoolObject
         }
 
         // 합침 완료
-        gm.GetScore((int)Mathf.Pow(2, level)); // 상위 레벨에 2제곱 만큼 점수 추가
+        um.score.GetScore(upLevel + 1); // 상위 레벨만큼 점수 추가
         sm.curMaxLv = Mathf.Max(upLevel, sm.curMaxLv); // 최대 스폰 레벨 설정
         // 변수 설정
         other.isMerge = false;

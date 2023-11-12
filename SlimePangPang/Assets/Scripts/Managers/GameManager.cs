@@ -5,18 +5,13 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public bool isOver;
-    public int score;
+    public int maxScore; // 세이브 되어야함
 
     protected override void Awake()
     {
         base.Awake();
 
         Application.targetFrameRate = 60; // 수직동기화
-    }
-
-    public void GetScore(int i)
-    {
-        score += i;
     }
 
     public void GameOver()
@@ -32,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator GameOverRoutine()
     {
         SpawnManager sm = SpawnManager.Instance;
+        UIManager um = UIManager.Instance;
 
         Slime[] slimes = sm.slimeList.ToArray();
 
@@ -49,6 +45,11 @@ public class GameManager : Singleton<GameManager>
 
         yield return new WaitForSeconds(1f);
 
-        SoundManager.Instance.SFXPlay(SFXType.Over, 1);
+        // 최대 점수 재정의
+        maxScore = um.score.curScore > maxScore ? um.score.curScore : maxScore;
+
+        SoundManager.Instance.SFXPlay(SFXType.Over, 1); // 사운드
+        BtnManager.Instance.Play(false); // 정지
+        um.gameOver.TabGameOver(um.score.curScore, maxScore, 0); // 돈은 나중에
     }
 }
