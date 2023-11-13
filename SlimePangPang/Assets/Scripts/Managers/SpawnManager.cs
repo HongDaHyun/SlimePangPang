@@ -44,6 +44,7 @@ public class SpawnManager : Singleton<SpawnManager>
         slime.transform.rotation = Quaternion.identity;
         lastSlime = slime;
 
+        UIManager.Instance.itemUI.ActiveBtn(true);
 
         if (BtnManager.Instance.isTouching)
             slime.Drag();
@@ -59,11 +60,12 @@ public class SpawnManager : Singleton<SpawnManager>
         return ranLv;
     }
 
-    private IEnumerator WaitNext()
+    public IEnumerator WaitNext()
     {
         while (lastSlime != null)
             yield return null;
 
+        UIManager.Instance.itemUI.ActiveBtn(false);
         yield return new WaitForSeconds(1f);
 
         NextSlime();
@@ -115,6 +117,20 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnAnimEffect(AnimEffect effect)
     {
         PoolManager.Instance.TakeToPool<AnimEffect>(effect.name, effect);
+    }
+    #endregion
+
+    #region UI
+    public ScorePopUp SpawnScore(int i, Transform trans)
+    {
+        ScorePopUp pop = PoolManager.Instance.GetFromPool<ScorePopUp>("ScorePopUp");
+        pop.StartCoroutine(pop.PopRoutine(i, trans));
+        return pop;
+    }
+
+    public void DeSpawnScore(ScorePopUp pop)
+    {
+        PoolManager.Instance.TakeToPool<ScorePopUp>(pop.name, pop);
     }
     #endregion
 }

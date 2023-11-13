@@ -69,8 +69,8 @@ public class Slime : MonoBehaviour, IPoolObject
         {
             deadTime += Time.deltaTime;
 
-            // 2초 동안 라인에 머물 시
-            if(deadTime > 2)
+            // 1초 동안 라인에 머물 시
+            if(deadTime > 1)
                 GameManager.Instance.GameOver(); // 게임 오버
         }
     }
@@ -166,8 +166,6 @@ public class Slime : MonoBehaviour, IPoolObject
         }
 
         // 합침 완료
-        um.score.GetScore(upLevel + 1); // 상위 레벨만큼 점수 추가
-        sm.curMaxLv = Mathf.Max(upLevel, sm.curMaxLv); // 최대 스폰 레벨 설정
         // 변수 설정
         other.isMerge = false;
         isMerge = false;
@@ -178,6 +176,9 @@ public class Slime : MonoBehaviour, IPoolObject
         // 새 슬라임과 이펙트 생성
         Slime newSlime = sm.SpawnSlime(upLevel, transform, State.Cute);
         newSlime.rigid.simulated = true;
+
+        um.score.GetScore(upLevel + 1, newSlime.transform); // 상위 레벨만큼 점수 추가
+        sm.curMaxLv = Mathf.Max(upLevel, sm.curMaxLv); // 최대 스폰 레벨 설정
 
         sm.SpawnPopAnim(newSlime);
     }

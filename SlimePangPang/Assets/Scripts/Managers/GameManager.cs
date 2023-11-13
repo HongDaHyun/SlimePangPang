@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Magic: 모든 슬라임의 위치를 변경
+// Slime: 떨어지는 슬라임을 다른 슬라임으로 바꿈
+// Needle: 무작위 두 개의 슬라임을 터뜨림
+// Sword: 가장 큰 슬라임을 터뜨림
+public enum ItemType { Magic, Slime, Needle, Sword }
+
 public class GameManager : Singleton<GameManager>
 {
     public bool isOver;
-    public int maxScore; // 세이브 되어야함
+    public Item[] items; // 세이브
+    public int maxScore; // 세이브
 
     protected override void Awake()
     {
@@ -51,5 +58,19 @@ public class GameManager : Singleton<GameManager>
         SoundManager.Instance.SFXPlay(SFXType.Over, 1); // 사운드
         BtnManager.Instance.Play(false); // 정지
         um.gameOver.TabGameOver(um.score.curScore, maxScore, 0); // 돈은 나중에
+    }
+}
+
+[System.Serializable]
+public class Item
+{
+    public ItemType type;
+    public int count;
+
+    public void UseItem()
+    {
+        count--;
+
+        UIManager.Instance.itemUI.SetItemUI((int)type, count);
     }
 }
