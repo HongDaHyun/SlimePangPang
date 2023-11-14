@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Title("Both")]
     public GameObject raycastPannel;
+    [Title("Robby")]
+
+    [Title("InGame")]
     public Score score;
     public GameOver gameOver;
     public ItemUI itemUI;
 
-    private void Start()
-    {
-        StartItemUI();
-    }
-
-    private void StartItemUI()
+    public void StartItemUI()
     {
         GameManager gm = GameManager.Instance;
         int length = gm.items.Length;

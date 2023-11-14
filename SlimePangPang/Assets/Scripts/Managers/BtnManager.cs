@@ -74,7 +74,34 @@ public class BtnManager : Singleton<BtnManager>
             Time.timeScale = 0f; // 중지
     }
 
+    public void StartBtn()
+    {
+        SceneManager.sceneLoaded += OnInGameSceneLoaded;
+        SceneManager.LoadScene(1);
+    }
+
+    private void OnInGameSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            // 첫 번째 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
+            UIManager.Instance.StartItemUI();
+
+            // 필요에 따라 이벤트 등록 해제
+            SceneManager.sceneLoaded -= OnInGameSceneLoaded;
+        }
+    }
+
     public void RestartBtn()
+    {
+        GameManager.Instance.isOver = false;
+        Play(true);
+
+        SceneManager.sceneLoaded += OnInGameSceneLoaded;
+        SceneManager.LoadScene(1);
+    }
+
+    public void RobbyBtn()
     {
         GameManager.Instance.isOver = false;
         Play(true);
