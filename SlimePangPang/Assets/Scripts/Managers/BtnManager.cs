@@ -53,6 +53,16 @@ public class BtnManager : Singleton<BtnManager>
         }
     }
 
+    public void TabShop()
+    {
+        UIManager.Instance.moneyUI.shopUI.text = GameManager.Instance.money.total.ToString();
+    }
+
+    public void TabSetting()
+    {
+        UIManager.Instance.settingUI.SetSettingUI();
+    }
+
     public void TabItem(string _type)
     {
         ItemType type = (ItemType)System.Enum.Parse(typeof(ItemType), _type);
@@ -64,6 +74,16 @@ public class BtnManager : Singleton<BtnManager>
 
         ui.TabUI(type);
         Tab(ui.pannel);
+    }
+
+    public void SetBGMVolume()
+    {
+        UIManager.Instance.settingUI.SetBGMVolume();
+    }
+    
+    public void SetSFXVolume()
+    {
+        UIManager.Instance.settingUI.SetSFXVolume();
     }
 
     public void Play(bool isPlay)

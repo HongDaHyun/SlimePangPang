@@ -121,10 +121,10 @@ public class SpawnManager : Singleton<SpawnManager>
     #endregion
 
     #region UI
-    public ScorePopUp SpawnScore(int i, Transform trans)
+    public ScorePopUp SpawnScore(int i, Slime slime)
     {
         ScorePopUp pop = PoolManager.Instance.GetFromPool<ScorePopUp>("ScorePopUp");
-        pop.StartCoroutine(pop.PopRoutine(i, trans));
+        pop.StartCoroutine(pop.PopRoutine(i, slime));
         return pop;
     }
 

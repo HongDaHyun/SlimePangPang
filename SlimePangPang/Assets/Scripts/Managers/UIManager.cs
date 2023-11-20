@@ -9,7 +9,10 @@ public class UIManager : Singleton<UIManager>
 {
     [Title("Both")]
     public GameObject raycastPannel;
+    public MoneyUI moneyUI;
+
     [Title("Robby")]
+    public SettingUI settingUI;
 
     [Title("InGame")]
     public Score score;
@@ -34,9 +37,9 @@ public class Score
     public Text text;
     public int curScore;
 
-    public void GetScore(int i, Transform trans)
+    public void GetScore(int i, Slime slime)
     {
-        SpawnManager.Instance.SpawnScore(i, trans);
+        SpawnManager.Instance.SpawnScore(i, slime);
 
         curScore += i;
         text.text = curScore.ToString();
@@ -115,4 +118,39 @@ public struct ItemBtn
 {
     public Button btn;
     public Text countTxt;
+}
+
+[Serializable]
+public struct MoneyUI
+{
+    public Text inGameUI, shopUI;
+}
+
+[Serializable]
+public class SettingUI
+{
+    public Scrollbar bgmBar, sfxBar;
+
+    public void SetBGMVolume()
+    {
+        SoundManager.Instance.bgmPlayer.volume = bgmBar.value;
+    }
+
+    public void SetSFXVolume()
+    {
+        SoundManager sm = SoundManager.Instance;
+
+        foreach(AudioSource source in sm.sfxPlayer)
+        {
+            source.volume = sfxBar.value;
+        }
+    }
+
+    public void SetSettingUI()
+    {
+        SoundManager sm = SoundManager.Instance;
+
+        bgmBar.value = sm.bgmPlayer.volume;
+        sfxBar.value = sm.sfxPlayer[0].volume;
+    }
 }

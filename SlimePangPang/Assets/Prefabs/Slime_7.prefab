@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 7
+  defColor: {r: 0.9490197, g: 0.95294124, b: 0.9490197, a: 1}
   state: 0
   defSize: 0
   rigid: {fileID: 0}

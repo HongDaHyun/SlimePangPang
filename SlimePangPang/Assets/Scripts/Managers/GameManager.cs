@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
+using System;
 
 // Magic: 모든 슬라임의 위치를 변경
 // Slime: 떨어지는 슬라임을 다른 슬라임으로 바꿈
@@ -10,8 +12,12 @@ public enum ItemType { Magic, Slime, Needle, Sword }
 
 public class GameManager : Singleton<GameManager>
 {
+    [Title("Value")]
     public bool isOver;
+
+    [Title("Save")]
     public Item[] items; // 세이브
+    public Moeny money;
     public int maxScore; // 세이브
 
     protected override void Awake()
@@ -57,11 +63,12 @@ public class GameManager : Singleton<GameManager>
 
         SoundManager.Instance.SFXPlay(SFXType.Over, 1); // 사운드
         BtnManager.Instance.Play(false); // 정지
-        um.gameOver.TabGameOver(um.score.curScore, maxScore, 0); // 돈은 나중에
+        um.gameOver.TabGameOver(um.score.curScore, maxScore, money.cur); // 게임오버 UI 활성화
+        money.SettleMoney(); // 돈 정산
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class Item
 {
     public ItemType type;
@@ -72,5 +79,32 @@ public class Item
         count--;
 
         UIManager.Instance.itemUI.SetItemUI((int)type, count);
+    }
+}
+
+[Serializable]
+public class Moeny
+{
+    public int total, cur;
+    
+    public void EarnMoney(int i) // 인게임
+    {
+        cur += i;
+        UIManager.Instance.moneyUI.inGameUI.text = cur.ToString();
+    }
+
+    public void SettleMoney() // 게임 종료 시
+    {
+        total += cur;
+        cur = 0;
+    }
+
+    public void UseMoney(int i)
+    {
+        // 만약 사용할 돈이 더 비싸다면 return (후에 알림UI 추가)
+        if (i > total)
+            return;
+
+        total -= i;
     }
 }

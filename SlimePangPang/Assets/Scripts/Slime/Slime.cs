@@ -9,6 +9,7 @@ public enum State { Idle, Cute, Surprise }
 public class Slime : MonoBehaviour, IPoolObject
 {
     public int level;
+    public Color defColor;
     public State state;
 
     private bool isDrag, isMerge, isAttach;
@@ -145,6 +146,7 @@ public class Slime : MonoBehaviour, IPoolObject
     {
         SpawnManager sm = SpawnManager.Instance;
         UIManager um = UIManager.Instance;
+        GameManager gm = GameManager.Instance;
 
         // 변수 설정
         int upLevel = level + 1;
@@ -177,7 +179,8 @@ public class Slime : MonoBehaviour, IPoolObject
         Slime newSlime = sm.SpawnSlime(upLevel, transform, State.Cute);
         newSlime.rigid.simulated = true;
 
-        um.score.GetScore(upLevel + 1, newSlime.transform); // 상위 레벨만큼 점수 추가
+        um.score.GetScore((int)Mathf.Pow(upLevel, 2), newSlime); // 상위레벨의 2제곱 만큼 점수 추가
+        gm.money.EarnMoney(upLevel); // 상위레벨만큼 돈 추가
         sm.curMaxLv = Mathf.Max(upLevel, sm.curMaxLv); // 최대 스폰 레벨 설정
 
         sm.SpawnPopAnim(newSlime);

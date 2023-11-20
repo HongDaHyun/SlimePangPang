@@ -24,12 +24,16 @@ public class ScorePopUp : MonoBehaviour, IPoolObject
 
     }
 
-    public IEnumerator PopRoutine(int i, Transform trans)
+    public IEnumerator PopRoutine(int i, Slime slime)
     {
         // 정의
-        transform.position = trans.position;
+        transform.position = slime.transform.position;
         transform.localScale = Vector3.one * MIN_SIZE;
         text.text = i.ToString();
+
+        // 색 설정
+
+        text.color = slime.defColor;
 
         // 애니메이션 효과(팝업)
         Sequence seq = DOTween.Sequence();
