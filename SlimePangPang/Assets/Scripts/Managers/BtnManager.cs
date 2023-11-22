@@ -53,6 +53,23 @@ public class BtnManager : Singleton<BtnManager>
         }
     }
 
+    public void Tab_NoRayCast(GameObject obj)
+    {
+        if (isTouching)
+            return;
+
+        if (!obj.activeSelf)
+        {
+            obj.SetActive(true);
+            obj.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            obj.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce).SetUpdate(true);
+        }
+        else
+        {
+            obj.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.25f).SetEase(Ease.InOutExpo).SetUpdate(true).OnComplete(() => obj.SetActive(false));
+        }
+    }
+
     public void TabShop()
     {
         UIManager.Instance.moneyUI.shopUI.text = GameManager.Instance.money.total.ToString();

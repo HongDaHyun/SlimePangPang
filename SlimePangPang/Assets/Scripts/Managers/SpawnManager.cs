@@ -151,7 +151,7 @@ public class Map
         // 위치 지정
         border_L.position = new Vector3(camBound.Left - border_L.localScale.x / 2f, 0, 0);
         border_R.position = new Vector3(camBound.Right + border_R.localScale.x / 2f, 0, 0);
-        border_B.position = new Vector3(0, camBound.Bottom + 1, 0);
+        border_B.position = new Vector3(0, camBound.Bottom, 0);
         spawnPoint.position = new Vector3(0, camBound.Top - 1.5f, 0);
         line.position = new Vector3(0, camBound.Top - 3f, 0);
     }

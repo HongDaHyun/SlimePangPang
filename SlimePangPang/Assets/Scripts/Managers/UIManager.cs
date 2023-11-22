@@ -10,9 +10,9 @@ public class UIManager : Singleton<UIManager>
     [Title("Both")]
     public GameObject raycastPannel;
     public MoneyUI moneyUI;
+    public SettingUI settingUI;
 
     [Title("Robby")]
-    public SettingUI settingUI;
 
     [Title("InGame")]
     public Score score;
