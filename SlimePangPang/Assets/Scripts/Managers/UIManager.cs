@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -34,7 +35,7 @@ public class UIManager : Singleton<UIManager>
 [Serializable]
 public class Score
 {
-    public Text text;
+    public TextMeshProUGUI text;
     public int curScore;
 
     public void GetScore(int i, Slime slime)
@@ -50,7 +51,7 @@ public class Score
 public class GameOver
 {
     public GameObject pannel;
-    public Text curScoreTxt, maxScoreTxt, earnMoneyTxt;
+    public TextMeshProUGUI curScoreTxt, maxScoreTxt, earnMoneyTxt;
 
     public void TabGameOver(int curScore, int maxScore, int earnMoney)
     {
@@ -66,7 +67,7 @@ public class GameOver
 public class ItemUI
 {
     public GameObject pannel;
-    public Text titleTxt, explainTxt;
+    public TextMeshProUGUI titleTxt, explainTxt;
     public ItemBtn[] itemBtn;
 
     public ItemType curSelect;
@@ -117,13 +118,13 @@ public class ItemUI
 public struct ItemBtn
 {
     public Button btn;
-    public Text countTxt;
+    public TextMeshProUGUI countTxt;
 }
 
 [Serializable]
 public struct MoneyUI
 {
-    public Text inGameUI, shopUI;
+    public TextMeshProUGUI inGameUI, shopUI;
 }
 
 [Serializable]

@@ -82,14 +82,6 @@ public class SpawnManager : Singleton<SpawnManager>
         return particle;
     }
 
-    public Particle SpawnPopParticle(Transform trans)
-    {
-        Particle pop = SpawnParticle("Pop_Effect", trans);
-        SoundManager.Instance.SFXPlay(SFXType.Pop, 0);
-
-        return pop;
-    }
-
     public void DeSpawnParticle(Particle particle)
     {
         PoolManager.Instance.TakeToPool<Particle>(particle.name, particle);
