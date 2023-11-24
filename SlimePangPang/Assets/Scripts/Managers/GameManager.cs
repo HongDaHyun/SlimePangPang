@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
 
     [Title("Save")]
     public Item[] items; // 세이브
-    public Moeny money;
+    public Moeny money; // 세이브 (total)
     public int maxScore; // 세이브
 
     protected override void Awake()
@@ -25,6 +25,32 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         Application.targetFrameRate = 60; // 수직동기화
+
+        Load(); // 저장 데이터 불러옴
+    }
+
+    public void Save()
+    {
+        // 기본 값 세이브
+        ES3.Save("Money", money.total, "Value.es3"); // 돈
+        ES3.Save("MaxScore", maxScore, "Value.es3"); // 최대 점수
+
+        // 아이템 세이브
+        ES3.Save("Items", items, "Items.es3");
+
+        // 상점 세이브
+    }
+
+    public void Load()
+    {
+        // 기본값 로드
+        money.total = ES3.Load("Money", "Value.es3", 0);
+        maxScore = ES3.Load("MaxScore", "Value.es3", 0);
+
+        // 아이템 로드
+        items = ES3.Load("Items", "Items.es3", items);
+
+        // 상점 로드
     }
 
     public void GameOver()
@@ -65,6 +91,8 @@ public class GameManager : Singleton<GameManager>
         BtnManager.Instance.Play(false); // 정지
         um.gameOver.TabGameOver(um.score.curScore, maxScore, money.cur); // 게임오버 UI 활성화
         money.SettleMoney(); // 돈 정산
+
+        Save(); // 세이브
     }
 }
 

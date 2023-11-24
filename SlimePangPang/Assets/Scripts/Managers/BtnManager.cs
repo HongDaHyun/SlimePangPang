@@ -146,6 +146,14 @@ public class BtnManager : Singleton<BtnManager>
         SceneManager.LoadScene(0);
     }
 
+    public void OverBtn(GameObject obj)
+    {
+        Play(true);
+        Tab(obj);
+
+        GameManager.Instance.GameOver();
+    }
+
     public void UseItemBtn()
     {
         GameManager gm = GameManager.Instance;

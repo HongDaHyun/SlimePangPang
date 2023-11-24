@@ -1748,11 +1748,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1461541965}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: RobbyBtn
-        m_Mode: 1
+        m_MethodName: OverBtn
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 516500477}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4237,8 +4237,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292204031
-  m_fontColor: {r: 1, g: 0.8352941, b: 0.8352941, a: 1}
+    rgba: 4279488511
+  m_fontColor: {r: 1, g: 0.8117647, b: 0.07450981, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
