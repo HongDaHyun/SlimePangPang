@@ -14,6 +14,7 @@ public class UIManager : Singleton<UIManager>
     public SettingUI settingUI;
 
     [Title("Robby")]
+    public ShopUI shopUI;
 
     [Title("InGame")]
     public Score score;
@@ -154,4 +155,10 @@ public class SettingUI
         bgmBar.value = sm.bgmPlayer.volume;
         sfxBar.value = sm.sfxPlayer[0].volume;
     }
+}
+
+[Serializable]
+public class ShopUI
+{
+    public Image mainSlimeImg;
 }

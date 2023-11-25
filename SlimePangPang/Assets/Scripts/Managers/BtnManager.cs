@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BtnManager : Singleton<BtnManager>
 {
@@ -123,6 +125,7 @@ public class BtnManager : Singleton<BtnManager>
         {
             // 첫 번째 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
             UIManager.Instance.StartItemUI();
+            SpawnManager.Instance.SpawnMap();
 
             // 필요에 따라 이벤트 등록 해제
             SceneManager.sceneLoaded -= OnInGameSceneLoaded;
@@ -138,11 +141,21 @@ public class BtnManager : Singleton<BtnManager>
         SceneManager.LoadScene(1);
     }
 
+    private void OnRobbySceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 첫 번째 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
+        DecoManager.Instance.SetDecoUI();
+
+        // 필요에 따라 이벤트 등록 해제
+        SceneManager.sceneLoaded -= OnRobbySceneLoaded;
+    }
+
     public void RobbyBtn()
     {
         GameManager.Instance.isOver = false;
         Play(true);
 
+        SceneManager.sceneLoaded += OnRobbySceneLoaded;
         SceneManager.LoadScene(0);
     }
 
@@ -257,4 +270,9 @@ public class BtnManager : Singleton<BtnManager>
         sm.DeSpawnSlime(maxSlime);
     }
     #endregion
+
+    public void SelSlimeBtn()
+    {
+        UIManager.Instance.shopUI.mainSlimeImg.sprite = EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite;
+    }
 }

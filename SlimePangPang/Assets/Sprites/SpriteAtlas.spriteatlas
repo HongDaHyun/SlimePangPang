@@ -57,6 +57,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 54256fe02191d6043a4ac4e872027e5c, type: 3}
   - {fileID: 21300000, guid: 19b8812171d55fb46a25dfd6b0a571e5, type: 3}
   - {fileID: 21300000, guid: 591ce8618805e57438bf4ff58b0b3ee5, type: 3}
+  - {fileID: 21300000, guid: 41524b619f4c32347857b2c18ee1f44d, type: 3}
   - {fileID: 21300000, guid: 2853ed612b4046643960600bc57cbf43, type: 3}
   - {fileID: 21300000, guid: e50f7822c1a35144490b6b53131bff08, type: 3}
   - {fileID: 21300000, guid: 8acf35040fe8ff1449a8bb37fd533c87, type: 3}
@@ -75,6 +76,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 63218dc8f55aa7c498e8722d5d779360, type: 3}
   - {fileID: 21300000, guid: 6731f909da0697c46aca1ed1ee3813e0, type: 3}
   - {fileID: 21300000, guid: 5dc2eb090a879604fa6092bb719589ba, type: 3}
+  - {fileID: 21300000, guid: 6f29e3294e690be4eafa49d2856507e2, type: 3}
   - {fileID: 21300000, guid: 1dd042a9f187fa9478ec8394f224d5cb, type: 3}
   - {fileID: 21300000, guid: ba5074d903b8a574ab203d14862e9137, type: 3}
   - {fileID: 21300000, guid: 45eac16a55bf6a0479693d69f02672cf, type: 3}
@@ -84,6 +86,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 05b4005b702b38a46a05f989b4f1be59, type: 3}
   - {fileID: 21300000, guid: cbcd997c0a2468c41a5e453d522b2742, type: 3}
   - {fileID: 21300000, guid: 788be3bc065800a4688ca49e173a87ec, type: 3}
+  - {fileID: 21300000, guid: 7728d40dba43e434badaf9ed21ed2f1a, type: 3}
   - {fileID: 21300000, guid: a3885e1d499c75940af2bf044eda70f2, type: 3}
   - {fileID: 21300000, guid: 3cb2d56dcec977d40a45f2c7065ad373, type: 3}
   - {fileID: 21300000, guid: 19351b9d5098e344b8bc056ab84d16e6, type: 3}
@@ -94,6 +97,7 @@ SpriteAtlas:
   - Slime_2_Surprise
   - Slime_3_Cute
   - Slime_7_Idle
+  - Giftbox
   - Slime_3_Surprise
   - Btn_Sword
   - Slime_0_Cute
@@ -112,6 +116,7 @@ SpriteAtlas:
   - Btn_Magic
   - Slime_5_Idle
   - Slime_1_Cute
+  - AppIcon
   - Slime_1_Surprise
   - Slime_2_Cute
   - Slime_6_Cute
@@ -121,6 +126,7 @@ SpriteAtlas:
   - Btn_Needle
   - Slime_7_Cute
   - Slime_4_Surprise
+  - Money
   - Slime_5_Surprise
   - Slime_4_Idle
   - Slime_1_Idle

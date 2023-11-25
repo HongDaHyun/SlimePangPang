@@ -11,7 +11,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public Slime lastSlime;
     public int curMaxLv;
 
-    private void Start()
+    public void SpawnMap()
     {
         map.SetMap();
 
@@ -123,6 +123,14 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnScore(ScorePopUp pop)
     {
         PoolManager.Instance.TakeToPool<ScorePopUp>(pop.name, pop);
+    }
+
+    public DecoUI SpawnDecoUI(Deco deco)
+    {
+        DecoUI decoUI = PoolManager.Instance.GetFromPool<DecoUI>();
+        decoUI.SetUI(deco);
+
+        return decoUI;
     }
     #endregion
 }
