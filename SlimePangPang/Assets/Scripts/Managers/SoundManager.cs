@@ -15,6 +15,14 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Start()
     {
+        GameManager gm = GameManager.Instance;
+
+        bgmPlayer.volume = gm.bgmVolume;
+        foreach(AudioSource source in sfxPlayer)
+        {
+            source.volume = gm.sfxVolume;
+        }
+
         bgmPlayer.Play();
     }
 

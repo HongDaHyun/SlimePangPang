@@ -4,8 +4,6 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class BtnManager : Singleton<BtnManager>
 {
@@ -72,11 +70,6 @@ public class BtnManager : Singleton<BtnManager>
         }
     }
 
-    public void TabShop()
-    {
-        UIManager.Instance.moneyUI.shopUI.text = GameManager.Instance.money.total.ToString();
-    }
-
     public void TabSetting()
     {
         UIManager.Instance.settingUI.SetSettingUI();
@@ -116,14 +109,14 @@ public class BtnManager : Singleton<BtnManager>
     public void StartBtn()
     {
         SceneManager.sceneLoaded += OnInGameSceneLoaded;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void OnInGameSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            // 첫 번째 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
+            // 1 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
             UIManager.Instance.StartItemUI();
             SpawnManager.Instance.SpawnMap();
 
@@ -138,16 +131,19 @@ public class BtnManager : Singleton<BtnManager>
         Play(true);
 
         SceneManager.sceneLoaded += OnInGameSceneLoaded;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void OnRobbySceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 첫 번째 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
-        DecoManager.Instance.SetDecoUI();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            // 0 씬이 로드된 후에 실행할 코드를 여기에 추가합니다.
+            DecoManager.Instance.SetDecoUI();
 
-        // 필요에 따라 이벤트 등록 해제
-        SceneManager.sceneLoaded -= OnRobbySceneLoaded;
+            // 필요에 따라 이벤트 등록 해제
+            SceneManager.sceneLoaded -= OnRobbySceneLoaded;
+        }
     }
 
     public void RobbyBtn()
@@ -156,7 +152,7 @@ public class BtnManager : Singleton<BtnManager>
         Play(true);
 
         SceneManager.sceneLoaded += OnRobbySceneLoaded;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void OverBtn(GameObject obj)
@@ -188,7 +184,8 @@ public class BtnManager : Singleton<BtnManager>
                 break;
         }
 
-        gm.items[(int)ui.curSelect].UseItem();
+        gm.items[(int)ui.curSelect].UseItem(); // 사용
+        ui.ActiveBtn(false);
     }
 
     #region Item
@@ -256,7 +253,7 @@ public class BtnManager : Singleton<BtnManager>
         Slime maxSlime = null; // 최대 레벨 슬라임
         slimeList.Remove(sm.lastSlime);
 
-        int max = 0;
+        int max = -1;
         foreach(Slime slime in slimeList)
         {
             if(slime.level > max)
@@ -271,8 +268,48 @@ public class BtnManager : Singleton<BtnManager>
     }
     #endregion
 
-    public void SelSlimeBtn()
+    public void SelSlimeBtn(int i)
     {
-        UIManager.Instance.shopUI.mainSlimeImg.sprite = EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite;
+        UIManager.Instance.shopUI.SetMainSlime(i);
+    }
+
+    public void OpenRanBox()
+    {
+        GameManager gm = GameManager.Instance;
+        // 돈이 없으면 리턴
+        if (gm.money.total < 100)
+            return;
+
+        DecoManager dm = DecoManager.Instance;
+        UIManager um = UIManager.Instance;
+
+        Deco[] everyDeco = dm.deco.ToArray();
+        List<Deco> noHaveDeco = new List<Deco>();
+
+        // 가지고 있지 않으면 리스트에 추가
+        foreach(Deco deco in everyDeco)
+        {
+            if(!deco.isHave)
+                noHaveDeco.Add(deco);
+        }
+
+        // 모두 가지고 있다면 리턴
+        if (noHaveDeco.Count == 0)
+            return;
+
+        gm.money.UseMoney(200); // 돈 사용
+        um.RobbyMoneyUI(); // 돈 UI
+        um.giftboxUI.OpenBox(); // 박스 애니메이션
+
+        // 랜덤 데코 해금
+        int ranID = Random.Range(0, noHaveDeco.Count);
+        int decoIndex = dm.GetIndex(noHaveDeco[ranID].ID);
+
+        // 언락 패널 생성
+        SpawnManager.Instance.SpawnUnlockUI(noHaveDeco[ranID]);
+
+        // 변수 설정
+        dm.deco[decoIndex].SetHave(true);
+        dm.decoUIs[decoIndex].SetButtonUI();
     }
 }

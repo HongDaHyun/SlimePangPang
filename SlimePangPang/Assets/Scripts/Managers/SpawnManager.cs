@@ -132,6 +132,19 @@ public class SpawnManager : Singleton<SpawnManager>
 
         return decoUI;
     }
+
+    public UnlockUI SpawnUnlockUI(Deco deco)
+    {
+        UnlockUI unlockUI = PoolManager.Instance.GetFromPool<UnlockUI>();
+        unlockUI.SetUI(deco, this);
+
+        return unlockUI;
+    }
+
+    public void DeSpawnUnlockUI(UnlockUI ui)
+    {
+        PoolManager.Instance.TakeToPool<UnlockUI>("UnlockUI", ui);
+    }
     #endregion
 }
 

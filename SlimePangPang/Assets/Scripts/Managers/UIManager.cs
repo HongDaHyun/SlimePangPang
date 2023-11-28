@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -15,11 +16,20 @@ public class UIManager : Singleton<UIManager>
 
     [Title("Robby")]
     public ShopUI shopUI;
+    public GiftboxUI giftboxUI;
+    public TextMeshProUGUI moneyTxt;
 
     [Title("InGame")]
     public Score score;
     public GameOver gameOver;
     public ItemUI itemUI;
+
+    private void Start()
+    {
+        // 현재 씬이 로비 라면
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            RobbyMoneyUI();
+    }
 
     public void StartItemUI()
     {
@@ -30,6 +40,11 @@ public class UIManager : Singleton<UIManager>
         {
             itemUI.SetItemUI(i, gm.items[i].count);
         }
+    }
+
+    public void RobbyMoneyUI()
+    {
+        moneyTxt.text = GameManager.Instance.money.total.ToString();
     }
 }
 
@@ -57,7 +72,7 @@ public class GameOver
     public void TabGameOver(int curScore, int maxScore, int earnMoney)
     {
         curScoreTxt.text = curScore.ToString();
-        maxScoreTxt.text = maxScore.ToString();
+        maxScoreTxt.text = "TOP " + maxScore.ToString();
         earnMoneyTxt.text = earnMoney.ToString();
 
         BtnManager.Instance.Tab(pannel);
@@ -125,7 +140,7 @@ public struct ItemBtn
 [Serializable]
 public struct MoneyUI
 {
-    public TextMeshProUGUI inGameUI, shopUI;
+    public TextMeshProUGUI inGameUI;
 }
 
 [Serializable]
@@ -136,6 +151,7 @@ public class SettingUI
     public void SetBGMVolume()
     {
         SoundManager.Instance.bgmPlayer.volume = bgmBar.value;
+        GameManager.Instance.bgmVolume = bgmBar.value;
     }
 
     public void SetSFXVolume()
@@ -146,6 +162,8 @@ public class SettingUI
         {
             source.volume = sfxBar.value;
         }
+
+        GameManager.Instance.sfxVolume = sfxBar.value;
     }
 
     public void SetSettingUI()
@@ -160,5 +178,28 @@ public class SettingUI
 [Serializable]
 public class ShopUI
 {
-    public Image mainSlimeImg;
+    public int ID;
+    public SlimeUI[] slimeUIs;
+
+    public void SetMainSlime(int i)
+    {
+        ID = i;
+
+        // 모두 비활성화
+        foreach (SlimeUI slimeUI in slimeUIs)
+            slimeUI.gameObject.SetActive(false);
+
+        slimeUIs[ID].gameObject.SetActive(true);
+    }
+}
+
+[Serializable]
+public class GiftboxUI
+{
+    public Animator boxAnim;
+
+    public void OpenBox()
+    {
+        boxAnim.SetTrigger("Open");
+    }
 }

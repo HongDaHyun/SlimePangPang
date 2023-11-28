@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 using DG.Tweening;
+using System.Linq;
 
 public enum State { Idle, Cute, Surprise }
 
@@ -31,6 +32,8 @@ public class Slime : MonoBehaviour, IPoolObject
         circle = GetComponent<PolygonCollider2D>();
         defSprite = sr.sprite;
         defSize = transform.localScale.x;
+
+        SetDeco();
     }
 
     public void OnGettingFromPool()
@@ -82,6 +85,25 @@ public class Slime : MonoBehaviour, IPoolObject
         {
             // 게임 오버 조건 초기화
             deadTime = 0;
+        }
+    }
+
+    private void SetDeco()
+    {
+        DecoManager dm = DecoManager.Instance;
+
+        SpriteRenderer[] decoSprites = GetComponentsInChildren<SpriteRenderer>();
+        decoSprites = decoSprites.Skip(1).ToArray();
+
+        int length = decoSprites.Length;
+        for(int i = 0; i < length; i++)
+        {
+            Deco deco = dm.FindByTypeIndex((DecoType)i, level);
+
+            if (deco == null)
+                continue;
+
+            decoSprites[i].sprite = deco.GetSprite();
         }
     }
 

@@ -14,16 +14,16 @@ public class GameManager : Singleton<GameManager>
 {
     [Title("Value")]
     public bool isOver;
+    public float bgmVolume; // 세이브
+    public float sfxVolume; // 세이브
 
     [Title("Save")]
     public Item[] items; // 세이브
     public Moeny money; // 세이브 (total)
     public int maxScore; // 세이브
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-
         Application.targetFrameRate = 60; // 수직동기화
 
         Load(); // 저장 데이터 불러옴
@@ -31,18 +31,24 @@ public class GameManager : Singleton<GameManager>
 
     public void Save()
     {
+        // 값 세이브
+        ES3.Save("BGM", bgmVolume, "Value.es3"); // BGM
+        ES3.Save("SFX", sfxVolume, "Value.es3"); // SFX
+
         // 기본 값 세이브
         ES3.Save("Money", money.total, "Value.es3"); // 돈
         ES3.Save("MaxScore", maxScore, "Value.es3"); // 최대 점수
 
         // 아이템 세이브
         ES3.Save("Items", items, "Items.es3");
-
-        // 상점 세이브
     }
 
     public void Load()
     {
+        // 값 세이브
+        bgmVolume = ES3.Load("BGM", "Value.es3", 0.2f);
+        sfxVolume = ES3.Load("SFX", "Value.es3", 0.3f);
+
         // 기본값 로드
         money.total = ES3.Load("Money", "Value.es3", 0);
         maxScore = ES3.Load("MaxScore", "Value.es3", 0);
@@ -51,6 +57,7 @@ public class GameManager : Singleton<GameManager>
         items = ES3.Load("Items", "Items.es3", items);
 
         // 상점 로드
+        DecoManager.Instance.LoadDeco();
     }
 
     public void GameOver()
