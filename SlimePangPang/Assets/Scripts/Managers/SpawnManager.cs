@@ -21,7 +21,7 @@ public class SpawnManager : Singleton<SpawnManager>
     #region Slime
     public Slime SpawnSlime(int i, Transform trans, State state)
     {
-        Slime slime = PoolManager.Instance.GetFromPool<Slime>($"Slime_{i}");
+        Slime slime = PoolManager.Instance.GetFromPool<Slime>($"NewSlime_{i}");
         slime.transform.position = trans.position;
         slime.SetState(state);
         slimeList.Add(slime);
@@ -66,7 +66,7 @@ public class SpawnManager : Singleton<SpawnManager>
             yield return null;
 
         UIManager.Instance.itemUI.ActiveBtn(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         NextSlime();
     }
@@ -158,8 +158,8 @@ public class Map
         CameraBound camBound = MapManager.Instance.camBound;
 
         // 크기 지정
-        border_L.localScale = new Vector3(1, camBound.Height, 1);
-        border_R.localScale = new Vector3(1, camBound.Height, 1);
+        border_L.localScale = new Vector3(5, camBound.Height, 1);
+        border_R.localScale = new Vector3(5, camBound.Height, 1);
 
         // 위치 지정
         border_L.position = new Vector3(camBound.Left - border_L.localScale.x / 2f, 0, 0);

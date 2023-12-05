@@ -1609,6 +1609,46 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 114473901}
     _nonLazy: 0
+  - _name: NewSlime_0
+    _component: {fileID: 1409644674340553538, guid: edab0246d9dcdda4590ff3bed0a27bbb, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_1
+    _component: {fileID: 1409644674340553538, guid: 712c5f83317c7524f980ce7867754b86, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_2
+    _component: {fileID: 1409644674340553538, guid: 65fae977806e1f64a8246840af2c29ab, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_3
+    _component: {fileID: 1409644674340553538, guid: 02823d11013c2cc4cbb8fe3b081d1b36, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_4
+    _component: {fileID: 1409644674340553538, guid: 3e3e51bc8f43c16478a60e68b71d1ef3, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_5
+    _component: {fileID: 1409644674340553538, guid: 00c459f26519e294b95af9e4a8fb843d, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_6
+    _component: {fileID: 1409644674340553538, guid: cb50831a1e986e94eb1ad01fe5a9bdce, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: NewSlime_7
+    _component: {fileID: 1409644674340553538, guid: 0e2d3e63087419b4f9671d2878bf214d, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
   - _name: Dust
     _component: {fileID: 2719824957280700727, guid: e68bc4847f74f9548bfcabc6925cff2c, type: 3}
     _count: 0
@@ -2224,7 +2264,7 @@ Transform:
   m_GameObject: {fileID: 707275193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 20, z: 1}
+  m_LocalScale: {x: 5, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 90552823}
@@ -3235,7 +3275,7 @@ Transform:
   m_GameObject: {fileID: 943394659}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 20, z: 1}
+  m_LocalScale: {x: 5, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 90552823}
@@ -6522,6 +6562,23 @@ MonoBehaviour:
     surprise: {fileID: 21300000, guid: 287156156379e154784d02eb2ebd44bf, type: 3}
   - cute: {fileID: 21300000, guid: cbcd997c0a2468c41a5e453d522b2742, type: 3}
     surprise: {fileID: 21300000, guid: 9c645a58632a442489c35fada0e621d6, type: 3}
+  newSlimeSprite:
+  - cute: {fileID: 21300000, guid: 7701b157d2b501d43a3e893bcb55f39e, type: 3}
+    surprise: {fileID: 21300000, guid: 8bb72fd261b9e884c89e420cd9dd00cc, type: 3}
+  - cute: {fileID: 21300000, guid: 0a4bed2355442be40baf48c9732f3832, type: 3}
+    surprise: {fileID: 21300000, guid: d0a1f1dfe5410c448ac3d399c9afc2de, type: 3}
+  - cute: {fileID: 21300000, guid: 8e962a3e388553a448f497f3d239068b, type: 3}
+    surprise: {fileID: 21300000, guid: f9e5a8511ae23c04b963366db8cf6df9, type: 3}
+  - cute: {fileID: 21300000, guid: 40b4f81df3b7b454d95c643f4dbbdaa0, type: 3}
+    surprise: {fileID: 21300000, guid: 0f49eb3d2c9403b4dadb17bae7cdb4ad, type: 3}
+  - cute: {fileID: 21300000, guid: e977b55489b0361429355132d4f211d3, type: 3}
+    surprise: {fileID: 21300000, guid: e47cfaa111ec6c74e9d50b6eee931e55, type: 3}
+  - cute: {fileID: 21300000, guid: 05eed0bbfc9a980428408d92d4c70997, type: 3}
+    surprise: {fileID: 21300000, guid: bb54d93eeae661746bab9c17a48c63cc, type: 3}
+  - cute: {fileID: 21300000, guid: 7993f4ddeca77204191d5921d8933f17, type: 3}
+    surprise: {fileID: 21300000, guid: 1ae34009ddfa1b44896199256bbb161e, type: 3}
+  - cute: {fileID: 21300000, guid: 6e9691c09c3226149b9f0b4c1a12ec84, type: 3}
+    surprise: {fileID: 21300000, guid: ade46affc5f50b24ca31871bb7fdc4c2, type: 3}
 --- !u!1 &1542173274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6972,7 +7029,6 @@ MonoBehaviour:
   raycastPannel: {fileID: 1396205054}
   moneyUI:
     inGameUI: {fileID: 1196391654}
-    shopUI: {fileID: 0}
   settingUI:
     bgmBar: {fileID: 566921871}
     sfxBar: {fileID: 1759644598}
@@ -6981,6 +7037,7 @@ MonoBehaviour:
     slimeUIs: []
   giftboxUI:
     boxAnim: {fileID: 0}
+  moneyTxt: {fileID: 0}
   score:
     text: {fileID: 1053445016}
     curScore: 0

@@ -31,6 +31,13 @@ public class DecoManager : Singleton<DecoManager>
     {
         List<Deco> loadDeco = ES3.Load("Decos", "Decos.es3", deco); // 肺靛
 
+        // 昏力等 单内 诀单捞飘
+        foreach (Deco existingDeco in loadDeco.ToList())
+        {
+            if (!deco.Any(d => d.ID == existingDeco.ID))
+                loadDeco.Remove(existingDeco);
+        }
+
         // 货肺款 单内 诀单捞飘
         foreach (Deco updatedDeco in deco)
         {

@@ -6,6 +6,7 @@ using System;
 public class SpriteData : Singleton<SpriteData>
 {
     public SlimeSprite[] slimeSprite;
+    public SlimeSprite[] newSlimeSprite;
 }
 
 [Serializable]

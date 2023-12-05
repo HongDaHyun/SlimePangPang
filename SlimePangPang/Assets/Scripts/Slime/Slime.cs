@@ -151,10 +151,10 @@ public class Slime : MonoBehaviour, IPoolObject
             case State.Idle:
                 yield break;
             case State.Cute:
-                sr.sprite = sd.slimeSprite[level].cute;
+                sr.sprite = sd.newSlimeSprite[level].cute;
                 break;
             case State.Surprise:
-                sr.sprite = sd.slimeSprite[level].surprise;
+                sr.sprite = sd.newSlimeSprite[level].surprise;
                 break;
         }
 
@@ -241,6 +241,7 @@ public class Slime : MonoBehaviour, IPoolObject
     {
         isDrag = false;
         rigid.simulated = true;
+        rigid.AddForce(Vector2.down * 5f, ForceMode2D.Impulse);
         SetState(State.Surprise);
     }
 
