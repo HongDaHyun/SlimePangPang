@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum SFXType { Pop, Next, Attach, Button, Over };
+public enum SFXType { Pop, Drop, Button, Over, Unlock };
 
 public class SoundManager : Singleton<SoundManager>
 {

@@ -82,6 +82,9 @@ public class DecoUI : MonoBehaviour, IPoolObject
         DecoManager dm = DecoManager.Instance;
         UIManager um = UIManager.Instance;
 
+        // 사운드
+        SoundManager.Instance.SFXPlay(SFXType.Button, 0);
+
         // 변수 설정
         ShopUI shopUI = um.shopUI;
         int currentSlimeID = shopUI.ID;

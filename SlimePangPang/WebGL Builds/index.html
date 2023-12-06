@@ -6,26 +6,28 @@
     <title>Unity WebGL Player | SlimePangPang</title>
   </head>
   <body style="text-align: center; margin: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; height: 100vh;">
-    <canvas id="unity-canvas" style="background: #B7B4AB; width: 360px; height: 640px;"></canvas>
-    <script src="Build/WebGL Builds.loader.js"></script>
-    <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-      }
+      <canvas id="unity-canvas" style="background: #B7B4AB; width: 360px; height: 640px;"></canvas>
+      <script src="Build/WebGL Builds.loader.js"></script>
+      <script>
+          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+              // Mobile device style: fill the whole browser client area with the game canvas:
+              var meta = document.createElement('meta');
+              meta.name = 'viewport';
+              meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+              document.getElementsByTagName('head')[0].appendChild(meta);
+          }
 
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebGL Builds.data.unityweb",
-        frameworkUrl: "Build/WebGL Builds.framework.js.unityweb",
-        codeUrl: "Build/WebGL Builds.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "RudenSmith",
-        productName: "SlimePangPang",
-        productVersion: "1.2",
-      });
-    </script>
+          createUnityInstance(document.querySelector("#unity-canvas"), {
+              dataUrl: "Build/WebGL Builds.data.unityweb",
+              frameworkUrl: "Build/WebGL Builds.framework.js.unityweb",
+              codeUrl: "Build/WebGL Builds.wasm.unityweb",
+              streamingAssetsUrl: "StreamingAssets",
+              companyName: "RudenSmith",
+              productName: "SlimePangPang",
+              productVersion: "1.2",
+              // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+              // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+          });
+      </script>
   </body>
 </html>

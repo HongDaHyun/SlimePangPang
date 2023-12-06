@@ -13,7 +13,7 @@ public class Slime : MonoBehaviour, IPoolObject
     public Color defColor;
     public State state;
 
-    private bool isDrag, isMerge, isAttach;
+    private bool isDrag, isMerge;
     private float leftBorder, rightBorder, topBorder;
     [HideInInspector] public float defSize;
     private float deadTime;
@@ -46,8 +46,6 @@ public class Slime : MonoBehaviour, IPoolObject
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(AttachRoutine());
-
         if (collision.gameObject.CompareTag("Slime"))
         {
             Slime other = collision.gameObject.GetComponent<Slime>();
@@ -114,7 +112,6 @@ public class Slime : MonoBehaviour, IPoolObject
 
         isDrag = false;
         isMerge = false;
-        isAttach = false;
         rigid.simulated = false;
         circle.enabled = true;
         rigid.velocity = Vector2.zero;
@@ -208,19 +205,6 @@ public class Slime : MonoBehaviour, IPoolObject
         sm.SpawnPopAnim(newSlime);
     }
 
-    IEnumerator AttachRoutine()
-    {
-        if (isAttach)
-            yield break;
-
-        isAttach = true;
-        SoundManager.Instance.SFXPlay(SFXType.Attach, 0);
-
-        yield return new WaitForSeconds(1f);
-
-        isAttach = false;
-    }
-
     private void Pop()
     {
         transform.localScale = Vector3.zero;
@@ -243,6 +227,8 @@ public class Slime : MonoBehaviour, IPoolObject
         rigid.simulated = true;
         rigid.AddForce(Vector2.down * 5f, ForceMode2D.Impulse);
         SetState(State.Surprise);
+
+        SoundManager.Instance.SFXPlay(SFXType.Drop, 1);
     }
 
     private IEnumerator SpawnMove()

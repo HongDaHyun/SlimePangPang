@@ -185,7 +185,7 @@ public class BtnManager : Singleton<BtnManager>
         }
 
         gm.items[(int)ui.curSelect].UseItem(); // 사용
-        ui.ActiveBtn(false);
+        ui.ActiveBtn();
     }
 
     #region Item
@@ -276,12 +276,13 @@ public class BtnManager : Singleton<BtnManager>
     public void OpenRanBox()
     {
         GameManager gm = GameManager.Instance;
+        UIManager um = UIManager.Instance;
+
         // 돈이 없으면 리턴
-        if (gm.money.total < 100)
+        if (gm.money.total < 1000 && !um.giftboxUI.isOpening)
             return;
 
         DecoManager dm = DecoManager.Instance;
-        UIManager um = UIManager.Instance;
 
         Deco[] everyDeco = dm.deco.ToArray();
         List<Deco> noHaveDeco = new List<Deco>();
@@ -297,9 +298,9 @@ public class BtnManager : Singleton<BtnManager>
         if (noHaveDeco.Count == 0)
             return;
 
-        gm.money.UseMoney(200); // 돈 사용
+        gm.money.UseMoney(1000); // 돈 사용
         um.RobbyMoneyUI(); // 돈 UI
-        um.giftboxUI.OpenBox(); // 박스 애니메이션
+        StartCoroutine(um.giftboxUI.OpenRoutine()); // 박스 애니메이션
 
         // 랜덤 데코 해금
         int ranID = Random.Range(0, noHaveDeco.Count);
@@ -311,5 +312,17 @@ public class BtnManager : Singleton<BtnManager>
         // 변수 설정
         dm.deco[decoIndex].SetHave(true);
         dm.decoUIs[decoIndex].SetButtonUI();
+
+        // 세이브
+        gm.Save();
+        dm.SaveDeco();
+
+        // 사운드
+        SoundManager.Instance.SFXPlay(SFXType.Unlock, 1);
+    }
+
+    public void BtnSound()
+    {
+        SoundManager.Instance.SFXPlay(SFXType.Button, 0);
     }
 }

@@ -119,11 +119,13 @@ public class ItemUI
         explainTxt.text = explain;
     }
 
-    public void ActiveBtn(bool isActive)
+    public void ActiveBtn()
     {
         int length = itemBtn.Length;
-        if (SpawnManager.Instance.slimeList.Count < 3)
-            isActive = false;
+        bool isActive = false;
+
+        if (SpawnManager.Instance.slimeList.Count > 2)
+            isActive = true;
 
         for (int i = 0; i < length; i++)
             itemBtn[i].btn.interactable = isActive;
@@ -197,9 +199,15 @@ public class ShopUI
 public class GiftboxUI
 {
     public Animator boxAnim;
+    public bool isOpening;
 
-    public void OpenBox()
+    public IEnumerator OpenRoutine()
     {
+        isOpening = true;
         boxAnim.SetTrigger("Open");
+
+        yield return new WaitForSeconds(0.3f);
+
+        isOpening = false;
     }
 }
