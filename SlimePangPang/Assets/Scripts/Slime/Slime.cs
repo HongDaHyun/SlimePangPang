@@ -18,6 +18,7 @@ public class Slime : MonoBehaviour, IPoolObject
     [HideInInspector] public float defSize;
     private float deadTime;
     private Sprite defSprite;
+    private SpriteRenderer[] decoSprites;
 
     [HideInInspector] public Rigidbody2D rigid;
     private SpriteRenderer sr;
@@ -30,14 +31,16 @@ public class Slime : MonoBehaviour, IPoolObject
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         circle = GetComponent<PolygonCollider2D>();
+        GetComponentsInChildren<SpriteRenderer>();
+        decoSprites = decoSprites.Skip(1).ToArray();
+
         defSprite = sr.sprite;
         defSize = transform.localScale.x;
-
-        SetDeco();
     }
 
     public void OnGettingFromPool()
     {
+        SetDeco();
         SetStat();
         SetBorder();
 
@@ -89,9 +92,6 @@ public class Slime : MonoBehaviour, IPoolObject
     private void SetDeco()
     {
         DecoManager dm = DecoManager.Instance;
-
-        SpriteRenderer[] decoSprites = GetComponentsInChildren<SpriteRenderer>();
-        decoSprites = decoSprites.Skip(1).ToArray();
 
         int length = decoSprites.Length;
         for(int i = 0; i < length; i++)
@@ -174,6 +174,10 @@ public class Slime : MonoBehaviour, IPoolObject
         other.rigid.simulated = false;
         other.circle.enabled = false;
         other.sr.sortingOrder = 1;
+
+        // 데코 안보이게
+        foreach (SpriteRenderer decoSprite in decoSprites)
+            decoSprite.sprite = null;
 
         // 프레임 단위 합쳐짐(10 프레임)
         int frameCount = 0;

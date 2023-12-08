@@ -15802,12 +15802,16 @@ MonoBehaviour:
     itemBtn:
     - btn: {fileID: 0}
       countTxt: {fileID: 0}
+      isUse: 0
     - btn: {fileID: 0}
       countTxt: {fileID: 0}
+      isUse: 0
     - btn: {fileID: 0}
       countTxt: {fileID: 0}
+      isUse: 0
     - btn: {fileID: 0}
       countTxt: {fileID: 0}
+      isUse: 0
     curSelect: 0
 --- !u!1 &1635916743
 GameObject:
