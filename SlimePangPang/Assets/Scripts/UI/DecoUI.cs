@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Redcode.Pools;
+using UnityEngine.Localization.Components;
 
 public class DecoUI : MonoBehaviour, IPoolObject
 {
     public Deco deco;
 
     public TextMeshProUGUI title;
+    public LocalizeStringEvent titleString;
     public Image pannelImg;
     public Image mainImg;
     public Button btn;
@@ -34,7 +36,7 @@ public class DecoUI : MonoBehaviour, IPoolObject
     {
         deco = _deco;
 
-        title.text = deco.name;
+        titleString.StringReference.SetReference("DecoTable", deco.name);
         title.color = DecoManager.Instance.pallate[1].color[(int)deco.tier]; // Æ¼¾î »ö
         mainImg.sprite = deco.sprite;
 

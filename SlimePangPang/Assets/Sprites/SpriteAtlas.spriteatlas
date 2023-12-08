@@ -56,6 +56,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 985c8200793b9f942a66ab4d2a1feaab, type: 3}
+  - {fileID: 21300000, guid: 8ed978004f7a7244090ba32b2af49e7c, type: 3}
   - {fileID: 21300000, guid: b9e9cc10f687079408251324843fd27b, type: 3}
   - {fileID: 21300000, guid: fb7c3f60f86802d4a93390240e5a8fa8, type: 3}
   - {fileID: 21300000, guid: 38be6c70c24ef574ab11cbf2b1ce3b06, type: 3}
@@ -106,6 +107,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c1108da7d7623da47b1fd5c89cdad159, type: 3}
   - {fileID: 21300000, guid: bc2417b7ccde0344d8e67aca0f7f9dbf, type: 3}
   - {fileID: 21300000, guid: 321002d7ce76a14469590df4fb585879, type: 3}
+  - {fileID: 21300000, guid: 282b7b08849234a4d89751e31017b6f5, type: 3}
   - {fileID: 21300000, guid: 8ee7913839b952d4d88813c073d67f36, type: 3}
   - {fileID: 21300000, guid: 96273e4836f27e24cbec102518d2dd99, type: 3}
   - {fileID: 21300000, guid: 9be949a81a61c3d438040cd45779b659, type: 3}
@@ -157,6 +159,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ade46affc5f50b24ca31871bb7fdc4c2, type: 3}
   m_PackedSpriteNamesToIndex:
   - 3D Glasses
+  - Korea
   - Slime#6_Idle
   - Hard Hat
   - Third Eye
@@ -207,6 +210,7 @@ SpriteAtlas:
   - Green Hat
   - Sunglasses
   - Dust 3
+  - USA
   - Wounds
   - Soldier Beret
   - Button

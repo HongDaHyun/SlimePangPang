@@ -4,10 +4,12 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.Localization.Settings;
 
 public class BtnManager : Singleton<BtnManager>
 {
     [HideInInspector] public bool isTouching; // 롱클릭 체크
+    [HideInInspector] public bool isBuying; // 연속 클릭 막음
 
     public void TouchDown()
     {
@@ -273,13 +275,13 @@ public class BtnManager : Singleton<BtnManager>
         UIManager.Instance.shopUI.SetMainSlime(i);
     }
 
-    public void OpenRanBox()
+    public void OpenRanBox(int money)
     {
         GameManager gm = GameManager.Instance;
         UIManager um = UIManager.Instance;
 
         // 돈이 없으면 리턴
-        if (gm.money.total < 1000 && !um.giftboxUI.isOpening)
+        if (gm.money.total < money && !isBuying)
             return;
 
         DecoManager dm = DecoManager.Instance;
@@ -298,9 +300,11 @@ public class BtnManager : Singleton<BtnManager>
         if (noHaveDeco.Count == 0)
             return;
 
-        gm.money.UseMoney(1000); // 돈 사용
+        StartCoroutine(um.BuyRoutine()); // 연속 클릭 방지
+
+        gm.money.UseMoney(money); // 돈 사용
         um.RobbyMoneyUI(); // 돈 UI
-        StartCoroutine(um.giftboxUI.OpenRoutine()); // 박스 애니메이션
+        um.giftboxUI.Open(); // 박스 애니메이션
 
         // 랜덤 데코 해금
         int ranID = Random.Range(0, noHaveDeco.Count);
@@ -321,8 +325,57 @@ public class BtnManager : Singleton<BtnManager>
         SoundManager.Instance.SFXPlay(SFXType.Unlock, 1);
     }
 
+    public void BuyBtn(int id)
+    {
+        GameManager gm = GameManager.Instance;
+        UIManager um = UIManager.Instance;
+
+        // 돈이 없으면 리턴
+        if (gm.money.total < 5000 && !isBuying)
+            return;
+
+        StartCoroutine(um.BuyRoutine()); // 연속 클릭 방지
+
+        gm.money.UseMoney(5000); // 돈 사용
+        um.RobbyMoneyUI(); // 돈 UI
+
+        // 변수 설정
+        gm.items[id].GainItem();
+
+        // 세이브
+        gm.Save();
+    }
+
     public void BtnSound()
     {
         SoundManager.Instance.SFXPlay(SFXType.Button, 0);
+    }
+
+    bool isChanging;
+    public void ChangeLocale()
+    {
+        if (isChanging)
+            return;
+
+        StartCoroutine(LocaleChange());
+    }
+
+    IEnumerator LocaleChange()
+    {
+        isChanging = true;
+
+        yield return LocalizationSettings.InitializationOperation;
+
+        string cur = LocalizationSettings.SelectedLocale.ToString();
+        int changeID = 0; // 영어
+
+        if (cur == "English (en)")
+        {
+            changeID = 1; // 한국어
+        }
+
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[changeID];
+
+        isChanging = false;
     }
 }

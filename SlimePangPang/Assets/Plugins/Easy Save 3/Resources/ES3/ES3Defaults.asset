@@ -36,6 +36,7 @@ MonoBehaviour:
     - Nementic.SelectionUtility.Samples
     - ProCamera2D.Examples
     - ProCamera2D.Runtime
+    - Sirenix.OdinInspector.Modules.UnityLocalization
     showAdvancedSettings: 1
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 0

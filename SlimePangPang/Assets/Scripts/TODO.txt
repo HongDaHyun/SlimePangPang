@@ -15,4 +15,5 @@
 9. GPGS(?)
 10. 종횡비 -> Done
 11. 유니티 로고 스플래시 이미지 삭제 -> Done
-12. Translate Manager 추가
+12. Translate Manager 추가 -> Done
+13. 애드몹

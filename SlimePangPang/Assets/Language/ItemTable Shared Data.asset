@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: ItemTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: ItemTable
+  m_TableCollectionNameGuidString: 88ba31d50f4aac840b959e1fdeff4815
+  m_Entries:
+  - m_Id: 779217813504
+    m_Key: Magic_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 892384329728
+    m_Key: Slime_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 913896914944
+    m_Key: Needle_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 943898771456
+    m_Key: Sword_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1573363138560
+    m_Key: Magic_contents
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1576559198208
+    m_Key: Slime_contents
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1578710876160
+    m_Key: Needle_contents
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1584058613760
+    m_Key: Sword_contents
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5792725497414942749
+  references:
+    version: 2
+    RefIds:
+    - rid: 5792725497414942749
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1701929372911

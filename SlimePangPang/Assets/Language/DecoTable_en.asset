@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DecoTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9a684dd00d123264f84a7328187d224d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11920228352
+    m_Localized: Afro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48481976320
+    m_Localized: Beanie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50688180224
+    m_Localized: BoBoBo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53133459456
+    m_Localized: Booo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59609464832
+    m_Localized: Brown Hair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432206266368
+    m_Localized: Chef Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 440091557888
+    m_Localized: Crown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441500844032
+    m_Localized: Green Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442121601024
+    m_Localized: Hamburger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442654277632
+    m_Localized: Hard Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443262451712
+    m_Localized: Magician Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443774156800
+    m_Localized: Soldier Beret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444344582144
+    m_Localized: Whose mouth is it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444894035968
+    m_Localized: Winding Hair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445451878400
+    m_Localized: Zombie Helmet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446039080960
+    m_Localized: 3D Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446596923392
+    m_Localized: Butterfly Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447163154432
+    m_Localized: Crude Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447758745600
+    m_Localized: Dragonfly glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448329170944
+    m_Localized: Goggles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448912179200
+    m_Localized: Heron Heron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449453244416
+    m_Localized: I'm not glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 450082390016
+    m_Localized: Null
+    m_Metadata:
+      m_Items: []
+  - m_Id: 450686369792
+    m_Localized: Smart Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 451252600832
+    m_Localized: Sunglasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 451843997696
+    m_Localized: Thick Eyebrows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 452447977472
+    m_Localized: Third Eye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 453039374336
+    m_Localized: Toy Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 453626576896
+    m_Localized: Vulture Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454201196544
+    m_Localized: Wound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809370624
+    m_Localized: Apricot Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455417544704
+    m_Localized: Blue Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456046690304
+    m_Localized: Cyan Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456646475776
+    m_Localized: Green Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457263038464
+    m_Localized: Purple Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457925738496
+    m_Localized: White Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458521329664
+    m_Localized: Yellow Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459121115136
+    m_Localized: Beads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459783815168
+    m_Localized: Bib
+    m_Metadata:
+      m_Items: []
+  - m_Id: 460404572160
+    m_Localized: Burger Clothes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 461046300672
+    m_Localized: Burger Necktie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 461725777920
+    m_Localized: Butt Chin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462283620352
+    m_Localized: Canine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462870822912
+    m_Localized: Cloud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1233574182912
+    m_Localized: Larva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1234283020288
+    m_Localized: Lolololol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1235516145664
+    m_Localized: Mustache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1307511373824
+    m_Localized: Piercing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1314549415936
+    m_Localized: Pointed Beard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1315564437504
+    m_Localized: Ribbon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1317883887616
+    m_Localized: Sparse Beard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361148133376
+    m_Localized: Torn Wound
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

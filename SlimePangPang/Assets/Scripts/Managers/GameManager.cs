@@ -92,7 +92,13 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(1f);
 
         // 최대 점수 재정의
-        maxScore = um.score.curScore > maxScore ? um.score.curScore : maxScore;
+        if(um.score.curScore > maxScore)
+        {
+            maxScore = um.score.curScore;
+            /*JSManager.Instance.SetMaxScore(maxScore, true);*/
+        }
+        else
+            /*JSManager.Instance.SetMaxScore(um.score.curScore, false);*/
 
         SoundManager.Instance.SFXPlay(SFXType.Over, 1); // 사운드
         BtnManager.Instance.Play(false); // 정지
@@ -111,9 +117,21 @@ public class Item
 
     public void UseItem()
     {
+        ItemUI item = UIManager.Instance.itemUI;
+        int id = (int)type;
+
+        if (item.itemBtn[id].isUse)
+            return;
+
         count--;
 
-        UIManager.Instance.itemUI.SetItemUI((int)type, count);
+        item.SetItemUI((int)type, count);
+        item.itemBtn[id].isUse = true;
+    }
+
+    public void GainItem()
+    {
+        count++;
     }
 }
 

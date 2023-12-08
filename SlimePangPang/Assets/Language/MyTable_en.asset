@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MyTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: f5666c9b90dd41840a52121a30eeb59e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55880728576
+    m_Localized: Game Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1370069417984
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1554568462336
+    m_Localized: Ranking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557504475136
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1943770513408
+    m_Localized: 'Slime is
+
+      <color=red>Pang</color> <color=orange>Pang</color>
+      <color=green>Pang</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1988053975040
+    m_Localized: Random Box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2598581059584
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2602154606592
+    m_Localized: Open!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2945483554816
+    m_Localized: Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3012835688448
+    m_Localized: Sorry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4250843234304
+    m_Localized: EXIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3017566863360
+    m_Localized: Developing...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4761814319104
+    m_Localized: GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4871889633280
+    m_Localized: Lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4901757272064
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4988113797120
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5020569321472
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11743778586624
+    m_Localized: has been unlocked!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12611705913344
+    m_Localized: Use!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403594104815616
+    m_Localized: Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403729366925312
+    m_Localized: Item Shop
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

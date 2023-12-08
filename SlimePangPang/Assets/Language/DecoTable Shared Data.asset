@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: DecoTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: DecoTable
+  m_TableCollectionNameGuidString: 9a684dd00d123264f84a7328187d224d
+  m_Entries:
+  - m_Id: 11920228352
+    m_Key: Afro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48481976320
+    m_Key: Beanie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50688180224
+    m_Key: BoBoBo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53133459456
+    m_Key: Booo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59609464832
+    m_Key: Brown Hair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432206266368
+    m_Key: Chef Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 440091557888
+    m_Key: Crown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441500844032
+    m_Key: Green Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442121601024
+    m_Key: Hamburger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442654277632
+    m_Key: Hard Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443262451712
+    m_Key: Magician Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443774156800
+    m_Key: Soldier Beret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444344582144
+    m_Key: Whose mouth is it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444894035968
+    m_Key: Winding Hair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445451878400
+    m_Key: Zombie Helmet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446039080960
+    m_Key: 3D Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446596923392
+    m_Key: Butterfly Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447163154432
+    m_Key: Crude Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447758745600
+    m_Key: Dragonfly glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448329170944
+    m_Key: Goggles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448912179200
+    m_Key: Heron Heron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449453244416
+    m_Key: I'm not glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 450082390016
+    m_Key: Null
+    m_Metadata:
+      m_Items: []
+  - m_Id: 450686369792
+    m_Key: Smart Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 451252600832
+    m_Key: Sunglasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 451843997696
+    m_Key: Thick Eyebrows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 452447977472
+    m_Key: Third Eye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 453039374336
+    m_Key: Toy Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 453626576896
+    m_Key: Vulture Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454201196544
+    m_Key: Wound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809370624
+    m_Key: Apricot Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455417544704
+    m_Key: Blue Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456046690304
+    m_Key: Cyan Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456646475776
+    m_Key: Green Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457263038464
+    m_Key: Purple Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457925738496
+    m_Key: White Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458521329664
+    m_Key: Yellow Cheek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459121115136
+    m_Key: Beads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459783815168
+    m_Key: Bib
+    m_Metadata:
+      m_Items: []
+  - m_Id: 460404572160
+    m_Key: Burger Clothes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 461046300672
+    m_Key: Burger Necktie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 461725777920
+    m_Key: Butt Chin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462283620352
+    m_Key: Canine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462870822912
+    m_Key: Cloud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1233574182912
+    m_Key: Larva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1234283020288
+    m_Key: Lolololol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1235516145664
+    m_Key: Mustache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1307511373824
+    m_Key: Piercing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1314549415936
+    m_Key: Pointed Beard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1315564437504
+    m_Key: Ribbon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1317883887616
+    m_Key: Sparse Beard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361148133376
+    m_Key: Torn Wound
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5792725497414942748
+  references:
+    version: 2
+    RefIds:
+    - rid: 5792725497414942748
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1701928607993

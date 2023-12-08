@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MyTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: EntireTable
+  m_TableCollectionNameGuidString: f5666c9b90dd41840a52121a30eeb59e
+  m_Entries:
+  - m_Id: 55880728576
+    m_Key: gameStart_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1370069417984
+    m_Key: shop_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1554568462336
+    m_Key: ranking_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557504475136
+    m_Key: settings_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1943770513408
+    m_Key: title_BG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1988053975040
+    m_Key: title_RandomboxPannel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2598581059584
+    m_Key: back_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2602154606592
+    m_Key: open_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2945483554816
+    m_Key: apply_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3012835688448
+    m_Key: title_DevelopPannel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3017566863360
+    m_Key: contents_DevelopPannel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4250843234304
+    m_Key: exit_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4761814319104
+    m_Key: title_GameoverPannel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4871889633280
+    m_Key: lobby_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4901757272064
+    m_Key: restart_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4988113797120
+    m_Key: title_PausePannel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5020569321472
+    m_Key: continue_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11743778586624
+    m_Key: contents_UnlockPannel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12611705913344
+    m_Key: use_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403594104815616
+    m_Key: item_Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403729366925312
+    m_Key: title_ItemPannel
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5792725497414942744
+  references:
+    version: 2
+    RefIds:
+    - rid: 5792725497414942744
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1701926634942

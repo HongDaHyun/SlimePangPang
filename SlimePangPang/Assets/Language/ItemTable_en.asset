@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ItemTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 88ba31d50f4aac840b959e1fdeff4815, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 779217813504
+    m_Localized: Magic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 892384329728
+    m_Localized: Slime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 913896914944
+    m_Localized: Needle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 943898771456
+    m_Localized: Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1573363138560
+    m_Localized: Randomly change the position of all slime!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1576559198208
+    m_Localized: Pop the slime that comes down next!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1578710876160
+    m_Localized: Pop two random slime!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1584058613760
+    m_Localized: Pop the biggest slime!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

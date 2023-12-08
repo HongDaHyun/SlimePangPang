@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization.Components;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -46,6 +46,17 @@ public class UIManager : Singleton<UIManager>
     {
         moneyTxt.text = GameManager.Instance.money.total.ToString();
     }
+
+
+    public IEnumerator BuyRoutine()
+    {
+        BtnManager bm = BtnManager.Instance;
+        bm.isBuying = true;
+
+        yield return new WaitForSeconds(0.3f);
+
+        bm.isBuying = false;
+    }
 }
 
 [Serializable]
@@ -83,7 +94,7 @@ public class GameOver
 public class ItemUI
 {
     public GameObject pannel;
-    public TextMeshProUGUI titleTxt, explainTxt;
+    public LocalizeStringEvent titleString, explainString;
     public ItemBtn[] itemBtn;
 
     public ItemType curSelect;
@@ -95,28 +106,8 @@ public class ItemUI
 
     public void TabUI(ItemType type)
     {
-        string explain = "";
-
-        curSelect = type;
-
-        switch (type)
-        {
-            case ItemType.Magic:
-                explain = "Randomly change the position of all slime!";
-                break;
-            case ItemType.Slime:
-                explain = "Pop the slime that comes down next!";
-                break;
-            case ItemType.Needle:
-                explain = "Pop two random slime!";
-                break;
-            case ItemType.Sword:
-                explain = "Pop the biggest slime!";
-                break;
-        }
-
-        titleTxt.text = curSelect.ToString();
-        explainTxt.text = explain;
+        titleString.StringReference.SetReference("ItemTable", type + "_title");
+        explainString.StringReference.SetReference("ItemTable", type + "_contents");
     }
 
     public void ActiveBtn()
@@ -124,19 +115,39 @@ public class ItemUI
         int length = itemBtn.Length;
         bool isActive = false;
 
+        // 수량 설정
+        int[] count = new int[length];
+        for (int i = 0; i < length; i++)
+            count[i] = int.Parse(itemBtn[i].countTxt.text);
+
+        // 슬라임 개수가 2보다 클 때 활성화
         if (SpawnManager.Instance.slimeList.Count > 2)
             isActive = true;
 
         for (int i = 0; i < length; i++)
-            itemBtn[i].btn.interactable = isActive;
+        {
+            if (count[i] <= 0 || itemBtn[i].isUse)
+                itemBtn[i].ActiveBtn();
+            else
+                itemBtn[i].btn.interactable = isActive;
+        }
     }
 }
 
 [Serializable]
-public struct ItemBtn
+public class ItemBtn
 {
     public Button btn;
     public TextMeshProUGUI countTxt;
+    public bool isUse;
+
+    public void ActiveBtn()
+    {
+        int count = int.Parse(countTxt.text);
+
+        if (count <= 0 || isUse)
+            btn.interactable = false;
+    }
 }
 
 [Serializable]
@@ -199,15 +210,9 @@ public class ShopUI
 public class GiftboxUI
 {
     public Animator boxAnim;
-    public bool isOpening;
 
-    public IEnumerator OpenRoutine()
+    public void Open()
     {
-        isOpening = true;
         boxAnim.SetTrigger("Open");
-
-        yield return new WaitForSeconds(0.3f);
-
-        isOpening = false;
     }
 }
