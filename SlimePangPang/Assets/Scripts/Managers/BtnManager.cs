@@ -13,6 +13,9 @@ public class BtnManager : Singleton<BtnManager>
 
     public void TouchDown()
     {
+        if (GameManager.Instance.isOver)
+            return;
+
         isTouching = true;
 
         SpawnManager sm = SpawnManager.Instance;
@@ -25,6 +28,9 @@ public class BtnManager : Singleton<BtnManager>
 
     public void TouchUp()
     {
+        if (GameManager.Instance.isOver)
+            return;
+
         isTouching = false;
 
         SpawnManager sm = SpawnManager.Instance;
@@ -367,15 +373,25 @@ public class BtnManager : Singleton<BtnManager>
         yield return LocalizationSettings.InitializationOperation;
 
         string cur = LocalizationSettings.SelectedLocale.ToString();
-        int changeID = 0; // 영어
+        int changeID = 0;
 
-        if (cur == "English (en)")
+        switch(cur)
         {
-            changeID = 1; // 한국어
+            case "English (en)":
+                changeID = 1;
+                break;
+            case "Korean (ko)":
+                changeID = 2;
+                break;
+            case "Russian (ru)":
+                changeID = 0;
+                break;
         }
 
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[changeID];
 
         isChanging = false;
+
+        RobbyBtn();
     }
 }

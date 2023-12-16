@@ -31,7 +31,7 @@ public class Slime : MonoBehaviour, IPoolObject
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         circle = GetComponent<PolygonCollider2D>();
-        GetComponentsInChildren<SpriteRenderer>();
+        decoSprites = GetComponentsInChildren<SpriteRenderer>();
         decoSprites = decoSprites.Skip(1).ToArray();
 
         defSprite = sr.sprite;

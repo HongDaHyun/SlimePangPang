@@ -29,37 +29,40 @@ public class DecoManager : Singleton<DecoManager>
 
     public void LoadDeco()
     {
-        List<Deco> loadDeco = ES3.Load("Decos", "Decos.es3", deco); // 로드
+        List<Deco> loadDeco = ES3.Load("Decos", "Decos.es3", deco); // Load
 
-        // 삭제된 데코 업데이트
-        foreach (Deco existingDeco in loadDeco.ToList())
+        // 존재하지 않는 아이디의 데코 삭제
+        loadDeco.RemoveAll(existingDeco => !deco.Any(d => d.ID == existingDeco.ID));
+
+        // Sprite 사라지는 버그 방지
+        foreach (Deco existingDeco in loadDeco)
         {
-            if (!deco.Any(d => d.ID == existingDeco.ID))
-                loadDeco.Remove(existingDeco);
+            Deco newDeco = deco.FirstOrDefault(d => d.ID == existingDeco.ID);
+            if (newDeco != null)
+            {
+                existingDeco.sprite = newDeco.sprite;
+            }
         }
 
-        // 새로운 데코 업데이트
-        foreach (Deco updatedDeco in deco)
-        {
-            if (!loadDeco.Any(d => d.ID == updatedDeco.ID))
-                loadDeco.Add(updatedDeco);
-        }
+        // 추가된 아이디의 데코 추가
+        loadDeco.AddRange(deco.Where(updatedDeco => !loadDeco.Any(d => d.ID == updatedDeco.ID)));
+
+        // 덮어씌우기
         deco = loadDeco;
 
-        // 타입 및 티어에 따라 정렬
+        // 티어에 따른 정렬
         deco.Sort((deco1, deco2) =>
         {
-            // 타입에 따라 정렬 (hat, eye, cheek, neck 순서로 정렬)
             int typeComparison = deco1.type.CompareTo(deco2.type);
             if (typeComparison != 0)
             {
                 return typeComparison;
             }
 
-            // 티어에 따라 정렬 (common, rare, epic, legend 순서로 정렬)
             return deco1.tier.CompareTo(deco2.tier);
         });
 
+        // UI설정
         SetDecoUI();
     }
 

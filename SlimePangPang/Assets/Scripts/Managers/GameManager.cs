@@ -88,6 +88,9 @@ public class GameManager : Singleton<GameManager>
             sm.SpawnPopAnim(slime);
             yield return new WaitForSeconds(0.1f);
         }
+        sm.lastSlime = null;
+
+        BtnManager.Instance.isTouching = false;
 
         yield return new WaitForSeconds(1f);
 
@@ -101,11 +104,12 @@ public class GameManager : Singleton<GameManager>
             /*JSManager.Instance.SetMaxScore(um.score.curScore, false);*/
 
         SoundManager.Instance.SFXPlay(SFXType.Over, 1); // 사운드
-        BtnManager.Instance.Play(false); // 정지
         um.gameOver.TabGameOver(um.score.curScore, maxScore, money.cur); // 게임오버 UI 활성화
         money.SettleMoney(); // 돈 정산
 
         Save(); // 세이브
+
+        BtnManager.Instance.Play(false); // 정지
     }
 }
 
