@@ -67,7 +67,7 @@ public class DecoUI : MonoBehaviour, IPoolObject
             if (deco.equipID < 0)
             {
                 btnTxt.text = EQUIP;
-                pannelImg.color = dm.pallate[0].color[8]; // »ö ¼³Á¤
+                pannelImg.color = Color.white;
             }
 
             // ÀåÂø O

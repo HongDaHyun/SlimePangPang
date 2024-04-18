@@ -108,6 +108,8 @@ public class ItemUI
     {
         titleString.StringReference.SetReference("ItemTable", type + "_title");
         explainString.StringReference.SetReference("ItemTable", type + "_contents");
+
+        curSelect = type;
     }
 
     public void ActiveBtn()
