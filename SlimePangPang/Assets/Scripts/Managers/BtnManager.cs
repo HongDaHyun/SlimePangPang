@@ -373,25 +373,20 @@ public class BtnManager : Singleton<BtnManager>
         yield return LocalizationSettings.InitializationOperation;
 
         string cur = LocalizationSettings.SelectedLocale.ToString();
-        int changeID = 0;
 
-        switch(cur)
-        {
-            case "English (en)":
-                changeID = 1;
-                break;
-            case "Korean (ko)":
-                changeID = 2;
-                break;
-            case "Russian (ru)":
-                changeID = 0;
-                break;
-        }
+        // 현재 선택된 로컬의 인덱스를 가져옴
+        int currentLocaleIndex = LocalizationSettings.AvailableLocales.Locales.FindIndex(locale => locale == LocalizationSettings.SelectedLocale);
 
+        // 변경될 로컬의 인덱스를 설정
+        int changeID = (currentLocaleIndex + 1) % LocalizationSettings.AvailableLocales.Locales.Count;
+
+        // 선택된 로컬 변경
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[changeID];
 
+        // 변경 작업 완료됨을 나타냄
         isChanging = false;
 
+        // 화면 업데이트
         RobbyBtn();
     }
 }
