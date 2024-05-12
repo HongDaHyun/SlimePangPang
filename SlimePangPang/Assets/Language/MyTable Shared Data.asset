@@ -99,6 +99,10 @@ MonoBehaviour:
     m_Key: title_ItemPannel
     m_Metadata:
       m_Items: []
+  - m_Id: 57019688093237248
+    m_Key: local_Btn
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

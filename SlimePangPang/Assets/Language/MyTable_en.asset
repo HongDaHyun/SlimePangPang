@@ -105,6 +105,10 @@ MonoBehaviour:
     m_Localized: Item Shop
     m_Metadata:
       m_Items: []
+  - m_Id: 57019688093237248
+    m_Localized: EN
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
