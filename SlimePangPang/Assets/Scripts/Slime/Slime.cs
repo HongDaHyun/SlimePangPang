@@ -13,7 +13,7 @@ public class Slime : MonoBehaviour, IPoolObject
     public Color defColor;
     public State state;
 
-    private bool isDrag, isMerge;
+    private bool isDrag, isMerge, isDrop;
     private float leftBorder, rightBorder, topBorder;
     [HideInInspector] public float defSize;
     private float deadTime;
@@ -225,9 +225,22 @@ public class Slime : MonoBehaviour, IPoolObject
         StartCoroutine(SpawnMove());
     }
 
-    public void Drop()
+    public IEnumerator Drop(Vector3 pos)
     {
-        isDrag = false;
+        isDrop = true;
+
+        while(Mathf.Abs(transform.position.x - pos.x) > 0.01f)
+        {
+            pos.x = Mathf.Clamp(pos.x, leftBorder, rightBorder);
+            pos.y = topBorder;
+            pos.z = 0;
+            transform.position = Vector3.Lerp(transform.position, pos, 0.5f);
+
+            yield return null;
+        }
+
+        SpawnManager.Instance.lastSlime = null;
+        isDrag = false; isDrop = false;
         rigid.simulated = true;
         rigid.AddForce(Vector2.down * 5f, ForceMode2D.Impulse);
         SetState(State.Surprise);
@@ -237,14 +250,14 @@ public class Slime : MonoBehaviour, IPoolObject
 
     private IEnumerator SpawnMove()
     {
-        while(isDrag)
+        while(isDrag && !isDrop)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             mousePos.x = Mathf.Clamp(mousePos.x, leftBorder, rightBorder);
             mousePos.y = topBorder;
             mousePos.z = 0;
-            transform.position = Vector3.Lerp(transform.position, mousePos, 0.2f);
+            transform.position = Vector3.Lerp(transform.position, mousePos, 0.5f);
 
             yield return null;
         }

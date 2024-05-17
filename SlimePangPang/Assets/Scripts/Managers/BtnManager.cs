@@ -38,8 +38,7 @@ public class BtnManager : Singleton<BtnManager>
         if (sm.lastSlime == null || !sm.lastSlime.gameObject.activeSelf)
             return;
 
-        sm.lastSlime.Drop();
-        sm.lastSlime = null;
+        StartCoroutine(sm.lastSlime.Drop(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
     }
 
     public void Tab(GameObject obj)
