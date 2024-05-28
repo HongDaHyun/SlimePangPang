@@ -25,6 +25,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Application.targetFrameRate = 60; // 수직동기화
+        Input.multiTouchEnabled = false;
 
         Load(); // 저장 데이터 불러옴
     }
@@ -90,7 +91,7 @@ public class GameManager : Singleton<GameManager>
         }
         sm.lastSlime = null;
 
-        BtnManager.Instance.isTouching = false;
+        TouchManager.Instance.isTouching = false;
 
         yield return new WaitForSeconds(1f);
 

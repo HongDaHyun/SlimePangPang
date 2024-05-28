@@ -46,7 +46,7 @@ public class SpawnManager : Singleton<SpawnManager>
         slime.transform.rotation = Quaternion.identity;
         lastSlime = slime;
 
-        if (BtnManager.Instance.isTouching)
+        if (TouchManager.Instance.isTouching)
             slime.Drag();
 
         StartCoroutine(WaitNext());

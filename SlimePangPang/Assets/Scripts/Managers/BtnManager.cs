@@ -8,42 +8,11 @@ using UnityEngine.Localization.Settings;
 
 public class BtnManager : Singleton<BtnManager>
 {
-    [HideInInspector] public bool isTouching; // 롱클릭 체크
     [HideInInspector] public bool isBuying; // 연속 클릭 막음
-
-    public void TouchDown()
-    {
-        if (GameManager.Instance.isOver)
-            return;
-
-        isTouching = true;
-
-        SpawnManager sm = SpawnManager.Instance;
-
-        if (sm.lastSlime == null)
-            return;
-
-        sm.lastSlime.Drag();
-    }
-
-    public void TouchUp()
-    {
-        if (GameManager.Instance.isOver)
-            return;
-
-        isTouching = false;
-
-        SpawnManager sm = SpawnManager.Instance;
-
-        if (sm.lastSlime == null || !sm.lastSlime.gameObject.activeSelf)
-            return;
-
-        StartCoroutine(sm.lastSlime.Drop(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
-    }
 
     public void Tab(GameObject obj)
     {
-        if (isTouching)
+        if (TouchManager.Instance.isTouching)
             return;
 
         if (!obj.activeSelf)
@@ -62,7 +31,7 @@ public class BtnManager : Singleton<BtnManager>
 
     public void Tab_NoRayCast(GameObject obj)
     {
-        if (isTouching)
+        if (TouchManager.Instance.isTouching)
             return;
 
         if (!obj.activeSelf)
