@@ -40,7 +40,7 @@ public class TouchManager : Singleton<TouchManager>
     private void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0) && !isTouching)
+        if (Input.GetMouseButtonDown(0) && !isTouching && !EventSystem.current.IsPointerOverGameObject())
         {
             TouchDown();
         }
@@ -57,7 +57,7 @@ public class TouchManager : Singleton<TouchManager>
             if (!IsTouchValid(touch.fingerId))
                 return;
 
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject())
             {
                 TouchDown();
             }

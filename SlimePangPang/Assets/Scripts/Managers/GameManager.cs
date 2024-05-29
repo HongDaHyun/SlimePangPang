@@ -110,6 +110,9 @@ public class GameManager : Singleton<GameManager>
 
         Save(); // 세이브
 
+        //점수 서버 등록
+        NetworkRepository.instance.SetScore(um.score.curScore);
+
         BtnManager.Instance.Play(false); // 정지
     }
 }
