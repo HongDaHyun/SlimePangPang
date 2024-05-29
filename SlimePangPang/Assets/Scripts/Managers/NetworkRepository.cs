@@ -16,7 +16,6 @@ public class NetworkRepository: MonoBehaviour
     static readonly string BASE_URL = "https://ol98wq7cs0.execute-api.ap-southeast-1.amazonaws.com";
 
     private int userId;
-    public TextMeshProUGUI testTxt;
 
     void Awake()
     {
@@ -40,7 +39,7 @@ public class NetworkRepository: MonoBehaviour
 
     public void SetUserId(int id)
     {
-        testTxt.text = id.ToString();
+        Debug.Log(id);
         userId = id;
     }
 
