@@ -310,7 +310,7 @@ public class BtnManager : Singleton<BtnManager>
 
         StartCoroutine(um.BuyRoutine()); // 연속 클릭 방지
 
-        gm.money.UseMoney(5000); // 돈 사용
+        gm.money.UseMoney(200); // 돈 사용
         um.RobbyMoneyUI(); // 돈 UI
 
         // 변수 설정

@@ -57,11 +57,11 @@ public class TouchManager : Singleton<TouchManager>
             if (!IsTouchValid(touch.fingerId))
                 return;
 
-            if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject())
+            if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject(touch.fingerId) && !isTouching)
             {
                 TouchDown();
             }
-            else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
+            else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && isTouching)
             {
                 TouchUp();
             }
